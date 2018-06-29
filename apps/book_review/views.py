@@ -124,8 +124,9 @@ def delete(request, review_id):
 
 def confirmation(request, review_id):
     r = Review.objects.get(id=review_id)
+    book = r.book.id
     r.delete()
-    return redirect ("/home")
+    return redirect ("/books/{}".format(book))
 
 def logout(request):
     request.session.clear()

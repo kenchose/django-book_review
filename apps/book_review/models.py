@@ -84,22 +84,6 @@ class ReviewManager(models.Manager):
 
     
 
-        
-
-
-            
-
-
-
-    
-# class BookManager(models.Manager):
-#     def addVal(self, postData):
-#         if len(postData['author']) > 0:
-#         else:
-
-
-    
-
 class User(models.Model):
     name = models.CharField(max_length=100)
     alias=models.CharField(max_length=100)
@@ -114,7 +98,6 @@ class User(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    # objects=BookManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __repr__(self):
@@ -122,7 +105,6 @@ class Book(models.Model):
 
 class Author(models.Model):
     author_name=models.CharField(max_length=50)
-    # objects=AuthorManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __repr__(self):

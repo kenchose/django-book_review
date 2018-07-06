@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
-    <title>User</title>
-</head>
-<body>
-    <a href="/home">Home</a> 
-    <form class='float-right' action="logout" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-    </form>    
-    <div class='border border-dark'>
-        <h3>User Alias: {{user.alias}}</h3>
-        <h3>Name: {{user.name}}</h3>
-        <h3>Email: {{user.email}}</h3>
-        <h3>Total Reviews: {{count}}</h3>
-    </div>
-    <h4>Posted Reviews on the following books:</h4>
-    {% for r in reviews %}
-    <ul>
-        <a href="/books/{{r.book.id}}"><u>{{r.book.title}}</u></a>
-    </ul>
-    {% endfor %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <meta http-equiv="refresh" content="8" > -->
+        <!-- CSS file -->
+        <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
+
+        <!-- Fontawesome (icons) --> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <title>User Profile</title>
+    </head>
+    <body>
+        <div id="user-wrapper">
+            <header>
+                <div class="container">
+                    <nav class="navbar navbar-expand-md"> 
+                        <a href="/home" class="navbar-brand display-5">Belp for Books</a>
+                        <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
+                            <span class="toggle"><i class="fas fa-book-open"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
+                            <!-- <a href="/books/add" class="btn btn-danger float-right">Add Book and Review</a> -->
+                            <div class="dropdown float-right">
+                                <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{curr_user.name}}
+                                </button>
+                                <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
+                                    <a class="dropdown-item" href="#">My Books</a>
+                                    <a class="dropdown-item" href="#">Support</a>
+                                </div>
+                            </div>
+                            <form class="nav-item float-right" action="/logout" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        
+
+            <section id="user-profile">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 form-group mt-4">
+                            <!-- <img src="{{ user.image.url}}" alt=""> -->
+                            <h3 class="form-control">User Alias: {{user.alias}}</h3>
+                            <h3 class="form-control">Name: {{user.name}}</h3>
+                            <h3 class="form-control">Email: {{user.email}}</h3>
+                            <h3 class="form-control">Total Reviews: {{count}}</h3>
+                        </div>
+                        <div class="col-sm-12 col-md-6 form-group">
+                            <h4>Posted Reviews on the following books:</h4>
+                                {% for r in reviews %}
+                                    <ul class="form-control">
+                                        <a href="/books/{{r.book.id}}"><u>{{r.book.title}}</u></a>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+        </div>
+    </body>
 </html>

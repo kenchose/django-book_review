@@ -71,7 +71,7 @@ class ReviewManager(models.Manager):
             author=Author.objects.create(author_name=postData['new_author'])
         else:
             author=Author.objects.get(id=postData['old_author'])
-        book = Book.objects.create(title=postData['title'], author = author)
+        book = Book.objects.create(title=postData['title'], author = author.author_name)
         reviewer = User.objects.get(id=user.id)
         review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
         return review
@@ -92,23 +92,24 @@ class User(models.Model):
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    def __repr__(self):
-        return '<User:{}'.format(self.email)
+    def __str__(self):
+        return '{}'.format(self.name)
 
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
+    # book_img=models.ImageField(upload_to="book_img", blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    def __repr__(self):
-        return '<Book object: {} by {}>'.format(self.title, self.author)
+    def __str__(self):
+        return '{} by {}'.format(self.title, self.author)
 
 class Author(models.Model):
     author_name=models.CharField(max_length=50)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    def __repr__(self):
-        return '<Author: {}'.format(self.author_name)
+    def __str__(self):
+        return '{}'.format(self.author_name)
 
 class Review(models.Model):
     content=models.CharField(max_length=255)
@@ -118,3 +119,5 @@ class Review(models.Model):
     objects=ReviewManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return '{} {}:{} by {}'.format(self.id, self.book, self.content, self.writer)

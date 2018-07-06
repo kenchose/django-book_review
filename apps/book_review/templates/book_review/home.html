@@ -4,87 +4,162 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <meta http-equiv="refresh" content="8" > -->
+        <!-- CSS file -->
+        <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
+
+        <!-- Fontawesome (icons) --> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <title>Belp Dashboard</title>
+    </head>
+    <body>
+        <div id="home-wrapper">
+            <header>
+                <div class="container">
+                    <nav class="navbar navbar-expand-md"> 
+                        <a href="/home" class="navbar-brand display-5">Belp for Books</a>
+                        <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
+                            <span class="toggle"><i class="fas fa-book-open"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
+                            <!-- <a href="/books/add" class="btn btn-danger float-right">Add Book and Review</a> -->
+                            <div class="dropdown float-right">
+                                <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{curr_user.name}}
+                                </button>
+                                <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
+                                    <a class="dropdown-item" href="#">My Books</a>
+                                    <a class="dropdown-item" href="#">Support</a>
+                                </div>
+                            </div>
+                            <form class="nav-item float-right" action="/logout" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            
+            
+            <section id="top">
+                <div class="container">
+                    <h1 id="text-awaits" class="display-4 text-center">Your next review awaits!</h1>
+                </div>
+            </section>
+
+            <!-- <same></same> and <cite></cite> tags -->
+            <section id="recent-review">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center mt-4 mb-4">
+                            <h3><i class="fas fa-chevron-circle-down"></i> <u>Recent Book Reviews</u>  <i class="fas fa-chevron-circle-down"></i></h3>
+                        </div>
+                        <div class="card-columns">
+                            {% for r in reviews %}
+                                <div class="card mt-2">
+                                    <h1>{{r.id}}</h1>
+                                    <p><a href="/user/{{ r.writer.id }}">{{ r.writer.name }}</a> wrote  a review</p>
+                                    <img class="card-img-top" src=".../100px160/" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5>
+                                        <p class="card-text">{{ r.content }}</p>
+                                        <small class="text-muted">Posted on {{r.created_at}}</small>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="other-reviews-home">
+                <div class="container">
+                    <div class='row'>
+                        <div id="other-reviews" class="mt-4">
+                            <h3>Other reviews</h3>
+                            {% for r in other_r %}
+                                <div id="all-reviews">
+                                    <h2>{{r.id}}</h2>
+                                    <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
+                                    <p>Rating: {{r.rating}}</p>
+                                    <p><a href="/user/{{r.writer.id}}" class="book-review-writer">{{r.writer.name}}</a> Says: content that is being siad</p>
+                                    <p>Posted on {{r.created_at}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div> 
+            </section>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
-        <title>Books Home</title>
-    </head>
-    <body>
-
-            <header>
-                    <div class="container">
-                        <nav class="navbar navbar-expand-sm"> 
-                                <!-- <input type="checkbox" id="nav-toggle" class="nav-toggle"> -->
-                            <a href="#" class="navbar-brand text-dark">Belp for Books</a>
-                            <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
-                                <span class="toggle"><i class="fas fa-book-open"></i></span>
-                            </button>
-                            <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item"><a href="#" class="nav-link text-light">Home</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link text-light">About</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link text-light">Book</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link text-light">Blog</a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link text-light">Contact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <!-- <label for="nav-toggle" class="nav-toggle-label">
-                            <span></span>
-                        </label> -->
-                    </div>
-                </header>
-        
-        <header>
-            <nav class="navbar navbar-light bg-light sticky-top navbar-expand-lg border border-dark">
-                <div class="navbar-brand pl-5">Belp</div>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="navbar-item">
-                            <a href="/dashboard" class="nav-link">Dashboard</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="/users/show/{{curr_user.id}}" class="nav-link">Profile</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="navbar-item">
-                            <form action="/logout" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-success">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        
-        <section id="dashboard">
-            <div class='border border-dark'>
-                <h1>Welcome, {{curr_user.name}}</h1>
-                <h3><p>Recent Book Reviews:</p></h3>
-                <a href="/books/add">Add Book and Review</a>
-            </div>
-            <div class='container'>
-                <div class='row'>
-                    <div class="col border border-dark">
-                        {% for r in reviews %}
-                        <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
-                        <p>Rating: {{r.rating}}</p>
-                        <p><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a> Says: {{r.content}}</p>
-                        <p>Posted on {{r.created_at}}</p>
-                        {% endfor %}
-                    </div>
-                    <div class='border border-dark col'>
-                        <h2>Other Books with Reviews:</h2>
-                        {% for b in books %}
-                        <ul>
-                            <a href="/books/{{b.id}}">{{b.title}}</a>
-                        </ul>
-                        {% endfor %}
-                    </div> 
-                </div>
-            </div> 
-        </section>
     </body>
 </html>
+            <!-- <section id="bookReview">
+                <div class="container">
+                    <div class='row'>
+                        <div class="col-sm-12 col-md-6">
+                            {% for r in reviews %}
+                                <div class="col-sm-12 col-md-12 review-box border border-dark mb-2">
+                                    <p>Posted on {{r.created_at}} by <a href="/user/{{r.writer.id}}">{{r.writer.name}}</a></p>
+                                    <h4><a href="/books/{{r.book.id}}">title of book </a></h4>
+                                    <p>Rating: {{r.rating}}</p>
+                                    <p>Says: content that is being siad</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 border border-dark " id="scrollBar"> 
+                            <h4 class="text-center">Other Book Reviews</h4>
+                            <table class="table table-striped"> 
+                                <thead class="table-danger">
+                                    <tr>
+                                        <th>Book Title</th>
+                                        <th>Author</th>
+                                    </tr>
+                                </th>
+                                <tbody>
+                                    {% for b in books%}
+                                        <tr>
+                                            <td><a href="/books/{{b.id}}">{{b.title}}</a></td>
+                                            <td>{{b.author}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+            </section> -->
+            
+
+            <!-- <section id="bookReview">
+                <div class="container">
+                    <div class='row'>
+                        <div class="col border border-dark">
+                            {% for r in reviews %}
+                            <h3><a href="/books/{{r.book.id}}">title of book </a></h3>
+                            <p>Rating: {{r.rating}}</p>
+                            <p><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a> Says: content that is being siad</p>
+                            <p>Posted on {{r.created_at}}</p>
+                            {% endfor %}
+                        </div>
+                        <div class='border border-dark col'>
+                            <h2>Other Books with Reviews:</h2>
+                            {% for b in books %}
+                            <ul>
+                                <a href="/books/{{b.id}}">{{b.title}}</a>
+                            </ul>
+                            {% endfor %}
+                        </div> 
+                    </div>
+                </div> 
+            </section> -->

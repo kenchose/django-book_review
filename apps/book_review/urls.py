@@ -1,5 +1,8 @@
 from django.conf.urls import url
+from django.contrib import admin  
 from . import views
+# from django.conf import settings  look up about static imports
+# from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.index),
@@ -14,4 +17,4 @@ urlpatterns = [
     url(r'^review/delete/(?P<review_id>\d+)$', views.delete),
     url(r'^delete_confirmation/(?P<review_id>\d+)$', views.confirmation),
     url(r'^logout$', views.logout),
-]
+] 

@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+:root {
+  --background: rgba(0, 200, 175, 1); }
+
+#reg-wrapper {
+  background: url("../../img/backgrounds/blur-book.jpg");
+  background-repeat: no-repeat;
+  font-family: 'Work Sans', sans-serif;
+  background-size: cover;
+  padding-bottom: 50px; }
+
+.navbar-brand {
+  color: #abb3b5; }
+
+.navbar-brand:hover {
+  color: greenyellow; }
+
+.nav-link {
+  color: #abb3b5; }
+
+.nav-link:hover {
+  color: greenyellow; }
+
+header {
+  background: #3d474f;
+  text-align: center;
+  width: 100%;
+  opacity: .7; }
+
+.validation {
+  margin-top: 35px; }
+
+.valid-style {
+  color: red;
+  font-weight: bold;
+  list-style: none;
+  letter-spacing: .1em;
+  padding-bottom: 12px; }
+
+.valid-logout {
+  color: green; }
+
+.navbar {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: red; }
+
+.fa-book-open {
+  color: red; }
+
+#reg-sign {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  opacity: .9;
+  padding: 0; }
+
+input[type=text] {
+  border-radius: 15px;
+  opacity: 0.8; }
+
+input[type=email] {
+  border-radius: 15px;
+  opacity: 0.8; }
+
+input[type=password] {
+  border-radius: 15px;
+  opacity: 0.8; }
+
+input[type=text]:focus {
+  opacity: 1; }
+
+input[type=email]:focus {
+  opacity: 1; }
+
+input[type=password]:focus {
+  opacity: 1; }
+
+#mainContainer {
+  margin-left: 40px;
+  margin-right: 40px; }
+
+.nav-item {
+  text-align: right; }
+
+.dropdown {
+  text-align: right; }
+
+#home-wrapper {
+  font-family: 'Work Sans', sans-serif; }
+
+#top {
+  background: url("../../img/backgrounds/belp-home4.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #384047;
+  padding-bottom: 55%;
+  padding-top: 50px; }
+
+#text-awaits {
+  color: #65662a; }
+
+#recent-review {
+  margin-top: 50px; }
+
+#other-reviews {
+  color: #384047;
+  margin: 0;
+  padding: 0; }
+
+#all-reviews {
+  border: solid red; }
+
+.review-box {
+  border-radius: 15px; }
+
+.review-box:hover {
+  background-color: white; }
+
+#scrollBar {
+  height: 50%;
+  border-radius: 15px; }
+
+#scrollBar:hover {
+  background-color: white; }
+
+.card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  transition: transform 400ms box-shadow 400ms; }
+
+.card:hover {
+  box-shadow: 0 15px 70px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01); }
+
+#add-wrapper {
+  font-family: 'Work Sans', sans-serif; }
+
+#area-text-add {
+  border-radius: 15px; }
+
+#user-profile h3 {
+  border-radius: 15px; }
+
+#user-wrapper {
+  font-family: 'Work Sans', sans-serif; }
+
+#book-wrapper {
+  font-family: 'Work Sans', sans-serif; }
+
+/*# sourceMappingURL=index.css.map */

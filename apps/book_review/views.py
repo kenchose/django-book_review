@@ -13,13 +13,16 @@ def home (request):
     if 'id' in request.session:
         user = User.objects.get(id=request.session['id'])
         all_users = User.objects.all()
-        all_reviews = Review.objects.all().order_by('-id')[:3]
-        all_books = Book.objects.all()
+        all_reviews = Review.objects.all().order_by('-id')[:6]
+        all_books = Book.objects.all().order_by('-id')[6:]
+        other_reviews = Review.objects.all().order_by('-id')[6:]
+        # all_other_reviews = other_reviews[8:]
         context = {
             'curr_user': user,
             'users': all_users,
             'reviews': all_reviews,
-            'books': all_books
+            'books': all_books,
+            'other_r': other_reviews,
         }
         return render(request, 'book_review/home.html', context)
     else:
@@ -31,7 +34,7 @@ def register(request):
         if len(result) > 0:
             for error in result:
                 messages.error(request, error)
-            return redirect ('/')
+            return redirect ('/#val')
         else:
             newUser = User.objects.newUser(request.POST)
             request.session['id'] = newUser.id
@@ -46,7 +49,7 @@ def login(request):
             if len(result) > 0:
                 for error in result:
                     messages.error(request, error)
-                return redirect('/')
+                return redirect('/#val')
         except:
             user = User.objects.logUser(request.POST)
             request.session['id']=user.id
@@ -84,15 +87,17 @@ def book(request, book_id):
     context = {
         'curr_book': book,
         'book_reviews': reviews,
-        'user': curr_user
+        'curr_user': curr_user
     }
     return render(request, 'book_review/book_show.html', context)
 
 def user(request, user_id):
+    curr_user = User.objects.get(id=request.session['id'])
     user = User.objects.get(id=user_id)
     reviews = Review.objects.filter(writer=user)
     count = reviews.count()
     context = {
+        'curr_user': curr_user,
         'user': user,
         'reviews': reviews,
         'count': count
@@ -130,6 +135,6 @@ def confirmation(request, review_id):
 
 def logout(request):
     request.session.clear()
-    messages.success(request, "You've been successfully logged out.")
+    logout = messages.success(request, "You've been successfully logged out.")
     return redirect('/')
     

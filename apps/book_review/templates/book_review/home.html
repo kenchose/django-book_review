@@ -7,10 +7,10 @@
         <!-- <meta http-equiv="refresh" content="8" > -->
         <!-- CSS file -->
         <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
-
+        
         <!-- Fontawesome (icons) --> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
+        
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <title>Belp Dashboard</title>
@@ -25,7 +25,6 @@
                             <span class="toggle"><i class="fas fa-book-open"></i></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                            <!-- <a href="/books/add" class="btn btn-danger float-right">Add Book and Review</a> -->
                             <div class="dropdown float-right">
                                 <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{curr_user.name}}
@@ -33,27 +32,27 @@
                                 <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
-                                    <a class="dropdown-item" href="#">My Books</a>
-                                    <a class="dropdown-item" href="#">Support</a>
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">My Books</a>
+                                    <a class="dropdown-item" href="mailto:kenchosepham@gmail.com" data-tool-tip="Send me an email" target="_blank">Support</a>
                                 </div>
+                                <form class="nav-item float-right" action="/logout" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                </form>
                             </div>
-                            <form class="nav-item float-right" action="/logout" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-                            </form>
                         </div>
                     </nav>
                 </div>
             </header>
             
             
-            <section id="top">
+            <section class="top">
                 <div class="container">
                     <h1 id="text-awaits" class="display-4 text-center">Your next review awaits!</h1>
                 </div>
             </section>
 
-            <!-- <same></same> and <cite></cite> tags -->
+
             <section id="recent-review">
                 <div class="container">
                     <div class="row">
@@ -78,18 +77,18 @@
                 </div>
             </section>
 
-
+            
             <section id="other-reviews-home">
                 <div class="container">
-                    <div class='row'>
-                        <div id="other-reviews" class="mt-4">
-                            <h3>Other reviews</h3>
+                    <div class='row d-block'>
+                        <div id="other-reviews" class="mt-4 pt-4 text-center">
+                            <h1>Other reviews</h1>
                             {% for r in other_r %}
-                                <div id="all-reviews">
+                                <div id="all-reviews" class="liner">
                                     <h2>{{r.id}}</h2>
                                     <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
                                     <p>Rating: {{r.rating}}</p>
-                                    <p><a href="/user/{{r.writer.id}}" class="book-review-writer">{{r.writer.name}}</a> Says: content that is being siad</p>
+                                    <p><a href="/user/{{r.writer.id}}" class="book-review-writer">{{r.writer.name}}</a> Says: {{r.content}}</p>
                                     <p>Posted on {{r.created_at}}</p>
                                 </div>
                             {% endfor %}

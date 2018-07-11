@@ -12,7 +12,10 @@
   background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
   background-size: cover;
-  padding-bottom: 50px; }
+  padding-bottom: 95px; }
+
+#reg-sign-main label {
+  margin-top: 15px; }
 
 .navbar-brand {
   color: #abb3b5; }
@@ -28,9 +31,7 @@
 
 header {
   background: #3d474f;
-  text-align: center;
-  width: 100%;
-  opacity: .7; }
+  width: 100%; }
 
 .validation {
   margin-top: 35px; }
@@ -42,14 +43,10 @@ header {
   letter-spacing: .1em;
   padding-bottom: 12px; }
 
-.valid-logout {
-  color: green; }
-
 .navbar {
   width: 100%;
   margin: 0;
-  padding: 0;
-  color: red; }
+  padding: 0; }
 
 .fa-book-open {
   color: red; }
@@ -59,6 +56,9 @@ header {
   margin-bottom: 50px;
   opacity: .9;
   padding: 0; }
+
+#reg-sign-header {
+  opacity: .7; }
 
 input[type=text] {
   border-radius: 15px;
@@ -88,13 +88,17 @@ input[type=password]:focus {
 .nav-item {
   text-align: right; }
 
-.dropdown {
-  text-align: right; }
-
 #home-wrapper {
   font-family: 'Work Sans', sans-serif; }
 
-#top {
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%; }
+
+.top {
   background: url("../../img/backgrounds/belp-home4.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -108,13 +112,9 @@ input[type=password]:focus {
 #recent-review {
   margin-top: 50px; }
 
-#other-reviews {
-  color: #384047;
+#other-reviews-home {
   margin: 0;
-  padding: 0; }
-
-#all-reviews {
-  border: solid red; }
+  background-color: #f6f6f6; }
 
 .review-box {
   border-radius: 15px; }
@@ -142,15 +142,73 @@ input[type=password]:focus {
   font-family: 'Work Sans', sans-serif; }
 
 #area-text-add {
-  border-radius: 15px; }
+  border-radius: 5px; }
 
-#user-profile h3 {
-  border-radius: 15px; }
+.profile-pic.form-control {
+  width: 150px;
+  height: 130px;
+  border: 0;
+  object-fit: scale-down; }
+
+#user-profile .form-control {
+  border-radius: 15px;
+  margin-top: 15px; }
 
 #user-wrapper {
   font-family: 'Work Sans', sans-serif; }
 
+.btn-edit a:hover {
+  text-decoration: none;
+  color: white; }
+
+.btn-edit a {
+  text-decoration: none;
+  color: white; }
+
+#edit-wrapper {
+  background: url("../../img/backgrounds/book-cactus.jpg");
+  background-repeat: no-repeat;
+  font-family: 'Work Sans', sans-serif;
+  background-size: cover;
+  padding-bottom: 50px; }
+
+#edit-profile {
+  margin-top: 80px; }
+
+.edit-form input[type=file] {
+  border-radius: 15px;
+  opacity: 1; }
+
+.edit-form input[type=text] {
+  border-radius: 15px; }
+
+.edit-form input[type=email] {
+  border-radius: 15px;
+  opacity: 1; }
+
+.edit-form input[type=password] {
+  border-radius: 15px;
+  opacity: 1; }
+
+.edit-form label {
+  margin-top: 15px; }
+
+.val-update ul {
+  margin-top: 15px; }
+
 #book-wrapper {
   font-family: 'Work Sans', sans-serif; }
+
+.top-header p {
+  margin-bottom: 0; }
+
+.liner::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: gray; }
 
 /*# sourceMappingURL=index.css.map */

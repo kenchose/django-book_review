@@ -104,10 +104,47 @@ def user(request, user_id):
     }
     return render (request, 'book_review/user.html', context)
 
+def edit_user(request, user_id):
+    curr_user=User.objects.get(id=request.session['id'])
+    user = User.objects.get(id=user_id)
+    if curr_user.id == user.id:
+        context = {
+            "curr_user": curr_user
+        }
+        return render(request, 'book_review/edit.html', context)
+    else:
+        error.append("You cannot edit other user's profile information.")
+        if error:
+            for error in error:
+                messages.error(request, error)
+                return redirect('/user/{}'.format(user_id))
+
+def update_user(request, user_id):
+    if request.method == 'POST':
+        curr_user=User.objects.get(id=user_id)
+        validation=User.objects.editVal(request.POST)
+        # try:
+        if len(validation) > 0:
+            for error in validation:
+                messages.error(request, error)
+            return redirect ('/edit/{}'.format(user_id))
+        # except:
+        else:
+            curr_user = User.objects.updateUser(request.POST, curr_user)
+            messages.success(request, "Your information have been successfully updated.")
+            return redirect ('/edit/{}'.format(curr_user.id))
+    else:
+        return redirect ('/edit/{}'.format(user_id))
+
+
 def add_review(request, book_id):
     if request.method == 'POST':
-        if len(request.POST['content']) < 1:
-            messages.error(request, 'Nothing to submit')
+        curr_user=User.objects.get(id=request.session['id'])
+        book=Book.objects.get(id=book_id)
+        validation=Review.objects.addReviewVal(request.POST, book, curr_user)
+        if validation > 1:
+            for error in validation:
+                messages.error(request, error)
             return redirect ('/books/{}'.format(book_id))
         else:
             user = User.objects.get(id=request.session['id'])

@@ -25,7 +25,6 @@
                             <span class="toggle"><i class="fas fa-book-open"></i></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                            <!-- <a href="/books/add" class="btn btn-danger float-right">Add Book and Review</a> -->
                             <div class="dropdown float-right">
                                 <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{curr_user.name}}
@@ -33,14 +32,14 @@
                                 <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
-                                    <a class="dropdown-item" href="#">My Books</a>
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">My Books</a>
                                     <a class="dropdown-item" href="#">Support</a>
                                 </div>
+                                <form class="nav-item float-right" action="/logout" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                </form>
                             </div>
-                            <form class="nav-item float-right" action="/logout" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-                            </form>
                         </div>
                     </nav>
                 </div>
@@ -48,65 +47,61 @@
 
 
             <section id="book-show">
-                <!-- <img src="{{ user.image.url}}" alt=""> -->
-                <h2 class="text-center mt-5"><p>{{curr_book.title}}</p><p><small class="text-center">by {{curr_book.author}}</small></p></h2>
+                <div class="top-header">
+                    <h2 class="text-center mt-4"><p><u>{{curr_book.title}}</u></p></h2>
+                    <p class="text-center"><small>by {{curr_book.author}}</small></p>
+                </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 mt-4 border border-danger">
-                            <h4>Reviews</h4>
-                            {% for r in book_reviews%}
-                                <div class='border border-dark'>
-                                    <h5>Rating: {{r.rating}}</h5>
-                                    <h5><a href="/users/{{r.writer.id}}">{{r.writer.name}}</a> says: {{r.content}}</h5>
-                                    <h5>Posted on: {{r.created_at}}</h5>
-                                    {% if user.id == r.writer.id %}
-                                        <a href="/review/delete/{{r.id}}">Delete the review</a>
-                                    {% endif%}
-                                </div>
-                            {% endfor %}
+                        <div class="col-sm-12 col-md-8 mb-4">
+                            <form action="/add_review/{{curr_book.id}}" method="post">
+                                {% csrf_token %}
+                                <label for="review"></label>
+                                <p><textarea id="area-text-add" name="content" class="form-control" rows="10" placeholder="Write a review..."></textarea></p>
+                                <label for="rating">Rating</label>
+                                <select name="rating" class="col-md-2">
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                    <option value='4'>4</option> 
+                                    <option value='5'>5</option>
+                                </select>
+                                <button class="btn btn-danger btn-sm float-right">Submit</button>
+                            </form>                                                          
                         </div>
-                    </div>
-                </div>
-                <!-- <div class="container mt-4">
-                    <div class="form-group row">
-                        <form action="/add_review/{{curr_book.id}}" method="post">
-                            {% csrf_token %}
-                            <textarea name="content" class="form-control" rows="9" cols="40" placeholder="Add a review"></textarea>
-                            <label for="rating">Rating</label>
-                            <select name="rating" class="mt-4">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary btn-sm ml-3">Submit Review</button>
-                        </form>
-                    </div>
-                </div> -->
-                <section>
-                    <div class="container mt-4">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-8 form-group">
-                                <form action="/add" method="post">
-                                    {% csrf_token %}
-                                    <label for="review" class="mt-4"></label>
-                                    <p><textarea id="area-text-add" name="content" class="form-control" rows="10" placeholder="Add a review"></textarea></p>
-                                    <label for="rating">Rating</label>
-                                    <select name="rating" class="form-control col-md-1">
-                                        <option value='1'>1</option>
-                                        <option value='2'>2</option>
-                                        <option value='3'>3</option>
-                                        <option value='4'>4</option> 
-                                        <option value='5'>5</option>
-                                    </select>
-                                    <button class="btn btn-danger mt-4" >Submit</button>
-                                </form>                                                  
+                        <div class="col-sm-12 col-md-4">
+                            <div class="container validation">
+                                <div id="val" class="row">
+                                    <ul class="col-10">
+                                        {%if messages%}
+                                            {%for message in messages%}
+                                                <li class="text-left valid-style">{{message}}</li>
+                                            {%endfor%}
+                                        {%endif%}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
-        
+                    {% for r in book_reviews%}
+                    <div class="row liner">
+                        <div class="col-sm-12 col-md-2 border border-success">
+                            <h9><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a></h9>
+                            <div class="col-sm-12 col-md-2 d-inline">
+                                Profile pic
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-10 border border-danger">
+                            <h9><p>Rating: {{r.rating}}</p></h9>
+                            <h9><p>{{r.content}}</p></h9>
+                            <h9>Posted on: {{r.created_at}}</h9>
+                            {% if user.id == r.writer.id %}
+                                <a href="/review/delete/{{r.id}}">Delete the review</a>
+                            {% endif%}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </section>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   

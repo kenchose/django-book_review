@@ -37,6 +37,39 @@ class UserManager(models.Manager):
         new_user=User.objects.create(name=postData['name'], alias=postData['alias'], email=postData['email'], password=hashed_pw)
         return new_user
 
+    def editVal(self, postData):
+        error=[]
+        if len(postData['name']) < 1 or len(postData['alias']) < 1 or len(postData['email']) < 1 or len(postData['password']) < 1:
+            error.append("All fields must be filled out") 
+        if len(postData['name']) < 1:
+            error.append("Name must be at least 2 characters long")
+        if len(postData['alias']) < 4:
+            error.append("Alias must be more than 4 characters long")
+        try:
+            validate_email(postData['email'])
+        except ValidationError as e:
+            error.append("Email must be a valid email.")
+        if len(postData['email']) < 1:
+            error.append('Email must be more than 2 characters long.')
+        if len(postData['password']) < 8:
+            error.append('Password must be at least 8 characters long.')
+        if postData['password'] != postData['password_confirmation']:
+            error.append('Password and confirmation does not match.')
+        # if User.objects.filter(email__iexact=postData['email']):        #how to make it so that all emails EXCEPT YOUR OWN is acceptable
+        #     error.append('Email is already registered.')
+        return error
+
+
+    def updateUser(self, postData, curr_user):
+        user = User.objects.get(id=curr_user.id)
+        user.name=postData['name']
+        user.alias=postData['alias']
+        user.email=postData['email']
+        hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+        user.password=hashed_pw
+        user.save()
+        return user
+
     def logVal(self, postData):
         error=[]
         retrieved_users=User.objects.filter(email=postData['email'])
@@ -76,6 +109,12 @@ class ReviewManager(models.Manager):
         review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
         return review
 
+    def addReviewVal(self, postData, book, user):
+        error=[]
+        if len(postData['content']) < 1:
+            error.append('Say something about the book to submit your review.')
+            return error
+
     def addReview(self, postData, book, user):
         reviewer=User.objects.get(id=user.id)
         book = Book.objects.get(id=book.id)
@@ -89,6 +128,7 @@ class User(models.Model):
     alias=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=255)
+    img=models.FileField(null=True, blank=True)
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)

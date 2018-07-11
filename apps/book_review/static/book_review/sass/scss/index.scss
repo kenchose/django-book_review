@@ -15,9 +15,12 @@
     background-repeat: no-repeat;
     font-family: 'Work Sans', sans-serif;
     background-size: cover;
-    padding-bottom: 50px;
+    padding-bottom: 95px;
 }
 
+#reg-sign-main label {
+    margin-top: 15px;
+}
 .navbar-brand {
     color: rgb(171, 179, 181);
 }
@@ -37,17 +40,16 @@
 
 header {
     background: rgb(61, 71, 79);
-    text-align: center;
+    // text-align: center;
     width:100%;
     // font-size: 1em;
     // color: rgb(171, 179, 181);
-    opacity: .7;
+    // opacity: .7;
     // z-index: 999;
 }
 
 .validation {
     margin-top: 35px;
-    
 }
 
 .valid-style {
@@ -58,15 +60,11 @@ header {
     padding-bottom: 12px;
 }
 
-.valid-logout {
-    color: green;
-}
-
 .navbar {
     width: 100%;
     margin: 0;
     padding: 0;
-    color: red;
+    // color: red;
 }
 
 .fa-book-open {
@@ -78,6 +76,9 @@ header {
     margin-bottom: 50px;
     opacity: .9;
     padding: 0;
+}
+#reg-sign-header {
+    opacity: .7;
 }
 
 input[type=text] {
@@ -111,9 +112,6 @@ input[type=password]:focus {
     text-align: right;
 }
 
-.dropdown {
-    text-align: right;
-}
 
 
 
@@ -133,7 +131,16 @@ input[type=password]:focus {
     // opacity: 0.9;
 }
 
-#top {
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+
+.top{
     background:url("../../img/backgrounds/belp-home4.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -150,15 +157,11 @@ input[type=password]:focus {
     margin-top: 50px;
 }
 
-#other-reviews {
-    color: rgb(56, 64, 71);
+#other-reviews-home {
+    // color: rgb(56, 64, 71);
     margin: 0;
-    padding: 0;
-    // background-color: rgb(249, 250, 250);
-}
-
-#all-reviews {
-    border: solid red;
+    // padding: 15px;
+    background-color: #f6f6f6;
 }
 
 .review-box {
@@ -173,6 +176,7 @@ input[type=password]:focus {
     height: 50%;
     border-radius: 15px;
 }
+
 #scrollBar:hover {
     background-color: white;
 }
@@ -205,7 +209,7 @@ input[type=password]:focus {
 }
 
 #area-text-add {
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 
@@ -214,17 +218,78 @@ input[type=password]:focus {
 //          USER PROFILE        //
 
 
-#user-profile h3 {
-    border-radius: 15px;
+.profile-pic.form-control {
+    width: 150px;
+    height: 130px;
+    border: 0;
+    object-fit: scale-down;
 }
+
+#user-profile .form-control {
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+// #user-profile ul {
+//     border-radius: 15px;
+// }
 
 #user-wrapper {
     font-family: 'Work Sans', sans-serif;
 }
 
+.btn-edit a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-edit a {
+    text-decoration: none;
+    color: white;
+}
 
 
 //          USER PROFILE        //
+
+//          EDIT PROFILE        //
+
+
+#edit-wrapper {
+background:url("../../img/backgrounds/book-cactus.jpg");
+background-repeat: no-repeat;
+font-family: 'Work Sans', sans-serif;
+background-size: cover;
+padding-bottom: 50px;
+}
+
+#edit-profile {
+    margin-top: 80px;
+}
+
+.edit-form input[type=file] {
+    border-radius: 15px;
+    opacity: 1;
+}
+.edit-form input[type=text] {
+    border-radius: 15px;
+}
+.edit-form input[type=email] {
+    border-radius: 15px;
+    opacity: 1;
+}
+.edit-form input[type=password] {
+    border-radius: 15px;
+    opacity: 1;
+}
+.edit-form label {
+    margin-top: 15px;
+}
+
+.val-update ul {
+    margin-top: 15px;
+}
+//          EDIT PROFILE        //
+
 
 //          SHOW BOOK           //
 
@@ -233,7 +298,19 @@ input[type=password]:focus {
     font-family: 'Work Sans', sans-serif;
 }
 
+.top-header p {
+    margin-bottom: 0;
+} 
 
+.liner::before {
+    content:'';
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: gray;
+}
 
 
 

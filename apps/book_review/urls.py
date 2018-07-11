@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^login$', views.login),
     url(r'^home$', views.home),
     url(r'^user/(?P<user_id>\d+)$', views.user),
+    url(r'^edit/(?P<user_id>\d+)$', views.edit_user),
+    url(r'^edit_profile/(?P<user_id>\d+)$', views.update_user),
     url(r'^books/add$', views.newAdd),
     url(r'^books/(?P<book_id>\d+)$', views.book),
     url(r'^add$', views.add),

@@ -30,9 +30,9 @@
                                     {{curr_user.name}}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">My Books</a>
-                                    <a class="dropdown-item" href="#">Support</a>
+                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                        <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
                                 </div>
                                 <form class="nav-item float-right" action="/logout" method="post">
                                     {% csrf_token %}

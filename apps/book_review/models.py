@@ -37,9 +37,11 @@ class UserManager(models.Manager):
         new_user=User.objects.create(name=postData['name'], alias=postData['alias'], email=postData['email'], password=hashed_pw)
         return new_user
 
-    def editVal(self, postData):
+    def editVal(self, postData,  postFile, curr_user):
+    # def editVal(self, postData,  postFile, curr_user):
+        user = User.objects.get(id=curr_user.id)
         error=[]
-        if len(postData['name']) < 1 or len(postData['alias']) < 1 or len(postData['email']) < 1 or len(postData['password']) < 1:
+        if len(postData['name']) < 1 or len(postData['alias']) < 1 or len(postData['email']) < 1:
             error.append("All fields must be filled out") 
         if len(postData['name']) < 1:
             error.append("Name must be at least 2 characters long")
@@ -51,22 +53,30 @@ class UserManager(models.Manager):
             error.append("Email must be a valid email.")
         if len(postData['email']) < 1:
             error.append('Email must be more than 2 characters long.')
-        if len(postData['password']) < 8:
+        if len(postData['password']) in range(1, 8):
             error.append('Password must be at least 8 characters long.')
         if postData['password'] != postData['password_confirmation']:
             error.append('Password and confirmation does not match.')
+        # if user.name == postData['name'] and user.alias == postData['alias'] and user.email == postData['email'] and len(postData['password']) < 1 and len(postData['password_confirmation']) < 1:
+        #     error.append("You have made no changes to your profile.")
+        if user.profile_pic == postFile['profile_pic'] and user.name == postData['name'] and user.alias == postData['alias'] and user.email == postData['email'] and len(postData['password']) < 1 and len(postData['password_confirmation']) < 1:
+            error.append("You have made no changes to your profile.")
         # if User.objects.filter(email__iexact=postData['email']):        #how to make it so that all emails EXCEPT YOUR OWN is acceptable
         #     error.append('Email is already registered.')
         return error
 
+        #can only edit if you change BOTH img AND another attribute
 
-    def updateUser(self, postData, curr_user):
+
+    def updateUser(self, postData, postFile, curr_user):
         user = User.objects.get(id=curr_user.id)
         user.name=postData['name']
         user.alias=postData['alias']
         user.email=postData['email']
-        hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
-        user.password=hashed_pw
+        user.profile_pic=postFile['profile_pic']
+        if len(postData['password']) > 0:
+            hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+            user.password=hashed_pw
         user.save()
         return user
 
@@ -128,7 +138,8 @@ class User(models.Model):
     alias=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=255)
-    img=models.FileField(null=True, blank=True)
+    # profile_pic=models.FileField(null=True, blank=True)
+    profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-profile.png")
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)

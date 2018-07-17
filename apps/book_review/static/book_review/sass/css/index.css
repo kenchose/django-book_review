@@ -4,15 +4,23 @@
   padding: 0;
   margin: 0; }
 
-:root {
-  --background: rgba(0, 200, 175, 1); }
+blockquote::before {
+  content: open-quote;
+  color: #cc0000;
+  font-size: 1.5em; }
+
+blockquote::after {
+  content: close-quote;
+  color: #cc0000;
+  font-size: 1.5em; }
 
 #reg-wrapper {
   background: url("../../img/backgrounds/blur-book.jpg");
   background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
   background-size: cover;
-  padding-bottom: 95px; }
+  background-position: center;
+  padding-bottom: 150px; }
 
 #reg-sign-main label {
   margin-top: 15px; }
@@ -138,6 +146,12 @@ input[type=password]:focus {
   box-shadow: 0 15px 70px rgba(0, 0, 0, 0.1);
   transform: scale(1.01); }
 
+.book-id {
+  border-radius: 30px;
+  padding-left: 12px;
+  background-color: #bcc1b5;
+  border: 3px solid black; }
+
 #add-wrapper {
   font-family: 'Work Sans', sans-serif; }
 
@@ -170,14 +184,13 @@ input[type=password]:focus {
   background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
   background-size: cover;
-  padding-bottom: 50px; }
+  padding-bottom: 110px; }
 
-#edit-profile {
-  margin-top: 80px; }
-
-.edit-form input[type=file] {
-  border-radius: 15px;
-  opacity: 1; }
+.edit-alert {
+  font-weight: bold;
+  list-style: none;
+  letter-spacing: .1em;
+  color: green; }
 
 .edit-form input[type=text] {
   border-radius: 15px; }

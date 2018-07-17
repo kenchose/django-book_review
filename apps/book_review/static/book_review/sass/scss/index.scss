@@ -6,16 +6,30 @@
     margin: 0;
 }
 
-:root {
-    --background: rgba(0, 200, 175, 1);
+blockquote::before {
+    content: open-quote;
+    color: #cc0000;
+    font-size: 1.5em;
+}
+blockquote::after {
+    content: close-quote;
+    color: #cc0000;
+    font-size: 1.5em;
 }
 
+// #recent-review, #other-reviews-home h2 {
+//     color: #cc0000;
+// }
+// :root {
+//     --background: rgba(0, 200, 175, 1);
+// }
 #reg-wrapper {
     background:url("../../img/backgrounds/blur-book.jpg");
     background-repeat: no-repeat;
     font-family: 'Work Sans', sans-serif;
     background-size: cover;
-    padding-bottom: 95px;
+    background-position:center;
+    padding-bottom: 150px;
 }
 
 #reg-sign-main label {
@@ -192,10 +206,20 @@ input[type=password]:focus {
     transform: scale(1.01);
 }
 
+.book-id  {
+    border-radius: 30px;
+    padding-left: 12px;
+    background-color: #bcc1b5;
+    border: 3px solid black;
+}
+
+
 
 //          DASHBOARD           //
 
 //          ADD-BOOK            //
+
+
 
 
 #add-wrapper {
@@ -213,9 +237,12 @@ input[type=password]:focus {
 }
 
 
+
 //          ADD BOOK            //
 
 //          USER PROFILE        //
+
+
 
 
 .profile-pic.form-control {
@@ -223,6 +250,7 @@ input[type=password]:focus {
     height: 130px;
     border: 0;
     object-fit: scale-down;
+    // object-fit: cover;
 }
 
 #user-profile .form-control {
@@ -249,9 +277,13 @@ input[type=password]:focus {
 }
 
 
+
+
 //          USER PROFILE        //
 
 //          EDIT PROFILE        //
+
+
 
 
 #edit-wrapper {
@@ -259,17 +291,23 @@ background:url("../../img/backgrounds/book-cactus.jpg");
 background-repeat: no-repeat;
 font-family: 'Work Sans', sans-serif;
 background-size: cover;
-padding-bottom: 50px;
+padding-bottom: 110px;
 }
 
-#edit-profile {
-    margin-top: 80px;
+.edit-alert {
+    font-weight: bold;
+    list-style: none;
+    letter-spacing: .1em;
+    color: green;
 }
+// #edit-profile {
+//     margin-top: 80px;
+// }
 
-.edit-form input[type=file] {
-    border-radius: 15px;
-    opacity: 1;
-}
+// .edit-form input[type=file] {
+//     border-radius: 15px;
+//     opacity: 1;
+// }
 .edit-form input[type=text] {
     border-radius: 15px;
 }
@@ -288,6 +326,8 @@ padding-bottom: 50px;
 .val-update ul {
     margin-top: 15px;
 }
+
+
 //          EDIT PROFILE        //
 
 
@@ -311,8 +351,6 @@ padding-bottom: 50px;
     margin-bottom: 30px;
     background: gray;
 }
-
-
 
 
 

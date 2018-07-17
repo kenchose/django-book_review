@@ -58,13 +58,16 @@ def login(request):
         return redirect ('/')
 
 def newAdd(request):
-    all_authors = Author.objects.all()
-    curr_user = User.objects.get(id=request.session['id'])
-    context = {
-        'authors': all_authors,
-        'curr_user': curr_user,
-    }
-    return render(request, 'book_review/add.html', context)
+    if not request.session['id']:
+        return redirect('/')
+    else:
+        all_authors = Author.objects.all()
+        curr_user = User.objects.get(id=request.session['id'])
+        context = {
+            'authors': all_authors,
+            'curr_user': curr_user,
+        }
+        return render(request, 'book_review/add.html', context)
 
 def add(request):
     if request.method == 'POST':
@@ -122,7 +125,7 @@ def edit_user(request, user_id):
 def update_user(request, user_id):
     if request.method == 'POST':
         curr_user=User.objects.get(id=user_id)
-        validation=User.objects.editVal(request.POST)
+        validation=User.objects.editVal(request.POST, request.FILES, curr_user)
         # try:
         if len(validation) > 0:
             for error in validation:
@@ -130,7 +133,7 @@ def update_user(request, user_id):
             return redirect ('/edit/{}'.format(user_id))
         # except:
         else:
-            curr_user = User.objects.updateUser(request.POST, curr_user)
+            curr_user = User.objects.updateUser(request.POST, request.FILES, curr_user)
             messages.success(request, "Your information have been successfully updated.")
             return redirect ('/edit/{}'.format(curr_user.id))
     else:
@@ -172,6 +175,6 @@ def confirmation(request, review_id):
 
 def logout(request):
     request.session.clear()
-    logout = messages.success(request, "You've been successfully logged out.")
+    messages.success(request, "You've been successfully logged out.")
     return redirect('/')
     

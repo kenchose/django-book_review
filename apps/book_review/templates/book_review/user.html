@@ -30,23 +30,23 @@
                                     <button class="btn btn-sm btn-danger  mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{curr_user.name}}
                                     </button>
-                                    <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>                                    <!-- </div> -->
+                                    <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>                                    
                                 {% else %}
                                     <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{curr_user.name}}
                                     </button>
-                                    <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>
+                                    <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
-                                        <a class="dropdown-item" href="/user/{{curr_user.id}}">My Books</a>
-                                        <a class="dropdown-item" href="mailto::kenchosepham@gmail" target="_blank">Support</a>
+                                            <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                            <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                            <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
                                     </div>
                                 </div>
                             </div>
                             {% endif %}
                             <form class="nav-item float-right" action="/logout" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                                <button type="submit" class="btn btn-danger btn-sm ml-1">Logout</button>
                             </form>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-2">            
-                            <img class="profile-pic form-control" src="../static/book_review/img/backgrounds/book-cactus.jpg" alt="profile pic">
+                            <img class="profile-pic form-control" src="{{user.profile_pic.url}}">
                         </div> 
                         <div class="col-sm-12 col-md-3 form-group mt-2">
                             <h2 class="mt-4">User Profile</h2>

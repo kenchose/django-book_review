@@ -202,15 +202,20 @@ input[type=password]:focus {
 }
 
 .card:hover {
-    box-shadow: 0 15px 70px rgba(0,0,0,.10);
+    box-shadow: 0 15px 70px rgba(0,0,0,.20);
     transform: scale(1.01);
 }
 
+.card img {
+    margin: auto;
+    display: block;
+    object-fit: scale-down;
+}
 .book-id  {
     border-radius: 30px;
     padding-left: 12px;
     background-color: #bcc1b5;
-    border: 3px solid black;
+    border: 1px solid black;
 }
 
 
@@ -340,6 +345,13 @@ padding-bottom: 110px;
 
 .top-header p {
     margin-bottom: 0;
+    margin-top: 30px;
+} 
+.top-header img {   //book img
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    object-fit: scale-down;
 } 
 
 .liner::before {
@@ -352,6 +364,12 @@ padding-bottom: 110px;
     background: gray;
 }
 
+.profile-pic {
+    width: 150px;
+    height: 130px;
+    border: 0;
+    object-fit: scale-down;
+}
 
 
 

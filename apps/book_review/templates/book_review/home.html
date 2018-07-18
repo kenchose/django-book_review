@@ -61,12 +61,12 @@
                         </div>
                         <div class="card-columns">
                             {% for r in reviews %}
-                                <div class="card mt-2">
+                                <div class="card mt-3 pt-3">
                                     <h1>{{r.id}}</h1>
-
-                                    <img class="card-img-top" src=".../100px160/" alt="Card image cap">
+                                    <img class="card-img-top" src="{{r.book.book_img.url}}" alt="Book image"> 
                                     <div class="card-body">
-                                        <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5>
+                                        <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5> 
+                                        <p class="text-center"><small class="text-center">by {{r.book.author}}</small></p>
                                         <p><a href="/user/{{ r.writer.id }}">{{ r.writer.name }}</a> wrote a review</p>
                                         <p class="card-text"><blockquote>{{ r.content }}</blockquote></p>
                                         <small class="text-muted">Posted on {{r.created_at}}</small>

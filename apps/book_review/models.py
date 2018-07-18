@@ -138,7 +138,6 @@ class User(models.Model):
     alias=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=255)
-    # profile_pic=models.FileField(null=True, blank=True)
     profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-profile.png")
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
@@ -149,7 +148,7 @@ class User(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    # book_img=models.ImageField(upload_to="book_img", blank=True)
+    book_img=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-book.png")
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):

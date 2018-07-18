@@ -143,14 +143,19 @@ input[type=password]:focus {
   transition: transform 400ms box-shadow 400ms; }
 
 .card:hover {
-  box-shadow: 0 15px 70px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 70px rgba(0, 0, 0, 0.2);
   transform: scale(1.01); }
+
+.card img {
+  margin: auto;
+  display: block;
+  object-fit: scale-down; }
 
 .book-id {
   border-radius: 30px;
   padding-left: 12px;
   background-color: #bcc1b5;
-  border: 3px solid black; }
+  border: 1px solid black; }
 
 #add-wrapper {
   font-family: 'Work Sans', sans-serif; }
@@ -213,7 +218,14 @@ input[type=password]:focus {
   font-family: 'Work Sans', sans-serif; }
 
 .top-header p {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-top: 30px; }
+
+.top-header img {
+  margin: auto;
+  margin-top: 50px;
+  display: block;
+  object-fit: scale-down; }
 
 .liner::before {
   content: '';
@@ -223,5 +235,11 @@ input[type=password]:focus {
   margin-top: 30px;
   margin-bottom: 30px;
   background: gray; }
+
+.profile-pic {
+  width: 150px;
+  height: 130px;
+  border: 0;
+  object-fit: scale-down; }
 
 /*# sourceMappingURL=index.css.map */

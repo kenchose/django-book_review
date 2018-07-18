@@ -37,9 +37,9 @@
                                     </button>
                                     <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
-                                            <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
-                                            <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
+                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                        <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
                                     </div>
                                 </div>
                             </div>
@@ -57,8 +57,10 @@
             <section id="user-profile">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 col-md-2">            
-                            <img class="profile-pic form-control" src="{{user.profile_pic.url}}">
+                        <div class="col-sm-12 col-md-2"> 
+                            {% if user.profile_pic %}           
+                                <img class="profile-pic form-control" src="{{user.profile_pic.url}}">
+                            {% endif %}
                         </div> 
                         <div class="col-sm-12 col-md-3 form-group mt-2">
                             <h2 class="mt-4">User Profile</h2>

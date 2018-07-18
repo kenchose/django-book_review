@@ -31,10 +31,9 @@
                                 </button>
                                 <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">Profile</a>
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}">My Books</a>
-                                    <a class="dropdown-item" href="#">Support</a>
-                                </div>
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                    <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>                                </div>
                                 <form class="nav-item float-right" action="/logout" method="post">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger btn-sm">Logout</button>
@@ -48,7 +47,8 @@
 
             <section id="book-show">
                 <div class="top-header">
-                    <h2 class="text-center mt-4"><p><u>{{curr_book.title}}</u></p></h2>
+                    <img class="book_img" src="{{curr_book.book_img.url}}">
+                    <h2 class="text-center"><p><u>{{curr_book.title}}</u></p></h2>
                     <p class="text-center"><small>by {{curr_book.author}}</small></p>
                 </div>
                 <div class="container">
@@ -69,6 +69,9 @@
                                 <button class="btn btn-danger btn-sm float-right">Submit</button>
                             </form>                                                          
                         </div>
+
+                        <!--create ratings into stars and not numbers-->
+
                         <div class="col-sm-12 col-md-4">
                             <div class="container validation">
                                 <div id="val" class="row">
@@ -85,15 +88,14 @@
                     </div>
                     {% for r in book_reviews%}
                     <div class="row liner">
-                        <div class="col-sm-12 col-md-2 border border-success">
-                            <h9><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a></h9>
-                            <div class="col-sm-12 col-md-2 d-inline">
-                                Profile pic
-                            </div>
+                        <div class="col-sm-12 col-md-2">
+                            {% if r.writer.profile_pic %}
+                                <img class="profile-pic" src="{{r.writer.profile_pic.url}}" alt="profile-pic">
+                            {% endif %} 
                         </div>
-                        <div class="col-sm-12 col-md-10 border border-danger">
+                        <div class="col-sm-12 col-md-10">
                             <h9><p>Rating: {{r.rating}}</p></h9>
-                            <h9><p>{{r.content}}</p></h9>
+                            <h9><p><a href="/user/{{r.writer.id}}" class="text-center">{{r.writer.name}}</a> wrote: {{r.content}}</p></h9>
                             <h9>Posted on: {{r.created_at}}</h9>
                             {% if user.id == r.writer.id %}
                                 <a href="/review/delete/{{r.id}}">Delete the review</a>

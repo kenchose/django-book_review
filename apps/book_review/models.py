@@ -57,15 +57,13 @@ class UserManager(models.Manager):
             error.append('Password must be at least 8 characters long.')
         if postData['password'] != postData['password_confirmation']:
             error.append('Password and confirmation does not match.')
-        # if user.name == postData['name'] and user.alias == postData['alias'] and user.email == postData['email'] and len(postData['password']) < 1 and len(postData['password_confirmation']) < 1:
-        #     error.append("You have made no changes to your profile.")
         if user.profile_pic == postFile['profile_pic'] and user.name == postData['name'] and user.alias == postData['alias'] and user.email == postData['email'] and len(postData['password']) < 1 and len(postData['password_confirmation']) < 1:
             error.append("You have made no changes to your profile.")
         # if User.objects.filter(email__iexact=postData['email']):        #how to make it so that all emails EXCEPT YOUR OWN is acceptable
         #     error.append('Email is already registered.')
         return error
 
-        #can only edit if you change BOTH img AND another attribute
+        #can only edit if you change BOTH img or only just img another attribute
 
 
     def updateUser(self, postData, postFile, curr_user):
@@ -131,6 +129,14 @@ class ReviewManager(models.Manager):
         add = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
         return add
 
+    def deleteVal(self, user, review):
+        user = User.objects.get(id=user.id)
+        review = Review.objects.get(id=review.id)
+        error= []
+        if not user.id == review.writer.id:
+            error.append("You don't have authorization to delete this review.")
+        return error
+
     
 
 class User(models.Model):
@@ -148,7 +154,7 @@ class User(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    book_img=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-book.png")
+    book_img=models.ImageField(upload_to="book_image", blank=True, default="profile_image/default-book.png")
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):

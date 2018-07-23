@@ -159,13 +159,24 @@ def add_review(request, book_id):
 
 
 def delete(request, review_id):
-    user = User.objects.get(id=request.session['id'])
-    review = Review.objects.get(id=review_id)
-    context = {
-        'user':user,
-        'review':review
-    }
-    return render(request, 'book_review/delete.html', context)
+    if request.method == "POST":
+        user = User.objects.get(id=request.session['id'])
+        review = Review.objects.get(id=review_id)
+        validation = User.objects.deleteVal(review, user)
+        if len(validation) > 0:
+            for error in valication:
+                messages.error(request, errro)
+            return redirect ("/books/{}".format(self.review_id))
+        else:
+            review_id.delete()
+            return redirect ("/books/{}".format(self.review_id))
+        # context = {
+        #     'user':user,
+        #     'review':review
+        # }
+        # return render(request, 'book_review/delete.html', context)
+    else:
+        return redirect ("/books/{}".format(self.review_id.book.id))
 
 def confirmation(request, review_id):
     r = Review.objects.get(id=review_id)

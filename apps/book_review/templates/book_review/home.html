@@ -47,8 +47,8 @@
             
             
             <section class="top">
-                <div class="container">
-                    <h1 id="text-awaits" class="display-4 text-center">Your next review awaits!</h1>
+                <div id="text-awaits" class="container" >
+                    <h1 id="text-show" class="display-4 text-center">Your next review awaits!</h1>
                 </div>
             </section>
 
@@ -62,7 +62,7 @@
                         <div class="card-columns">
                             {% for r in reviews %}
                                 <div class="card mt-3 pt-3">
-                                    <h1>{{r.id}}</h1>
+                                    <!-- <h1>{{r.id}}</h1> -->
                                     <img class="card-img-top" src="{{r.book.book_img.url}}" alt="Book image"> 
                                     <div class="card-body">
                                         <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5> 
@@ -89,14 +89,14 @@
                             <div id="all-reviews" class="liner">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-1">
+                                        <!-- <div class="col-md-1">
                                             <h2 class="book-id">{{r.id}}</h2>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-11">
                                             <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
                                             <p>Rating: {{r.rating}}</p>
                                             <p><a href="/user/{{r.writer.id}}" class="book-review-writer">{{r.writer.name}}</a> says: <blockquote>{{r.content}}</blockquote></p>
-                                            <p>Posted on {{r.created_at}}</p>    
+                                            <p>Posted on {{r.created_at}}</p>  
                                         </div>
                                     </div>
                                     <!-- <h2 class="border border-radius d-inline">{{r.id}}</h2> -->
@@ -110,65 +110,9 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+
+        <!--Javascript-->
+        <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type="text/javascript" src="../static/book_review/js/book_show.js"></script>        
     </body>
 </html>
-            <!-- <section id="bookReview">
-                <div class="container">
-                    <div class='row'>
-                        <div class="col-sm-12 col-md-6">
-                            {% for r in reviews %}
-                                <div class="col-sm-12 col-md-12 review-box border border-dark mb-2">
-                                    <p>Posted on {{r.created_at}} by <a href="/user/{{r.writer.id}}">{{r.writer.name}}</a></p>
-                                    <h4><a href="/books/{{r.book.id}}">title of book </a></h4>
-                                    <p>Rating: {{r.rating}}</p>
-                                    <p>Says: content that is being siad</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 border border-dark " id="scrollBar"> 
-                            <h4 class="text-center">Other Book Reviews</h4>
-                            <table class="table table-striped"> 
-                                <thead class="table-danger">
-                                    <tr>
-                                        <th>Book Title</th>
-                                        <th>Author</th>
-                                    </tr>
-                                </th>
-                                <tbody>
-                                    {% for b in books%}
-                                        <tr>
-                                            <td><a href="/books/{{b.id}}">{{b.title}}</a></td>
-                                            <td>{{b.author}}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> 
-            </section> -->
-            
-
-            <!-- <section id="bookReview">
-                <div class="container">
-                    <div class='row'>
-                        <div class="col border border-dark">
-                            {% for r in reviews %}
-                            <h3><a href="/books/{{r.book.id}}">title of book </a></h3>
-                            <p>Rating: {{r.rating}}</p>
-                            <p><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a> Says: content that is being siad</p>
-                            <p>Posted on {{r.created_at}}</p>
-                            {% endfor %}
-                        </div>
-                        <div class='border border-dark col'>
-                            <h2>Other Books with Reviews:</h2>
-                            {% for b in books %}
-                            <ul>
-                                <a href="/books/{{b.id}}">{{b.title}}</a>
-                            </ul>
-                            {% endfor %}
-                        </div> 
-                    </div>
-                </div> 
-            </section> -->

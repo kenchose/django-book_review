@@ -269,6 +269,11 @@ input[type=password]:focus {
 
 #user-wrapper {
     font-family: 'Work Sans', sans-serif;
+    background:url("../../img/backgrounds/wood.jpeg");
+    background-repeat: no-repeat;
+    font-family: 'Work Sans', sans-serif;
+    background-size: cover;
+    padding-bottom: 510px; 
 }
 
 .btn-edit a:hover {
@@ -295,19 +300,19 @@ input[type=password]:focus {
 background:url("../../img/backgrounds/book-cactus.jpg");
 background-repeat: no-repeat;
 font-family: 'Work Sans', sans-serif;
+font-weight: bold;
 background-size: cover;
-padding-bottom: 110px;
+padding-bottom: 130px;
 }
 
 .edit-alert {
     font-weight: bold;
     list-style: none;
     letter-spacing: .1em;
-    color: green;
 }
-// #edit-profile {
-//     margin-top: 80px;
-// }
+.edit-profile {
+    padding-top: 62px;
+}
 
 // .edit-form input[type=file] {
 //     border-radius: 15px;
@@ -367,10 +372,13 @@ padding-bottom: 110px;
 .profile-pic {
     width: 150px;
     height: 130px;
-    border: 0;
     object-fit: scale-down;
 }
 
+.fa-trash-alt {
+    color: red;
+    cursor: pointer;
+}
 
 
 

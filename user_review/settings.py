@@ -121,5 +121,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/' #for user on browser
-MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_image/media') #for server
+MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_image/media') #for server Maybe i can rename to server_img/media???
 #can you make more than one directory so that maybe you want one folder for specific images?

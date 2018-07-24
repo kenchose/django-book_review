@@ -17,12 +17,6 @@ blockquote::after {
     font-size: 1.5em;
 }
 
-// #recent-review, #other-reviews-home h2 {
-//     color: #cc0000;
-// }
-// :root {
-//     --background: rgba(0, 200, 175, 1);
-// }
 #reg-wrapper {
     background:url("../../img/backgrounds/blur-book.jpg");
     background-repeat: no-repeat;
@@ -54,12 +48,7 @@ blockquote::after {
 
 header {
     background: rgb(61, 71, 79);
-    // text-align: center;
     width:100%;
-    // font-size: 1em;
-    // color: rgb(171, 179, 181);
-    // opacity: .7;
-    // z-index: 999;
 }
 
 .validation {
@@ -78,7 +67,6 @@ header {
     width: 100%;
     margin: 0;
     padding: 0;
-    // color: red;
 }
 
 .fa-book-open {
@@ -136,13 +124,7 @@ input[type=password]:focus {
 
 
 #home-wrapper {
-    // background-color: rgb(237, 239, 240);
-    // background-color: white;
     font-family: 'Work Sans', sans-serif;
-    // background:url("../../img/backgrounds/pexels-photo-1145303.jpeg");
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    // opacity: 0.9;
 }
 
 #myVideo {
@@ -172,9 +154,7 @@ input[type=password]:focus {
 }
 
 #other-reviews-home {
-    // color: rgb(56, 64, 71);
     margin: 0;
-    // padding: 15px;
     background-color: #f6f6f6;
 }
 
@@ -228,13 +208,7 @@ input[type=password]:focus {
 
 
 #add-wrapper {
-    // background-color: rgb(237, 239, 240);
-    // background-color: white;
     font-family: 'Work Sans', sans-serif;
-    // background:url("../../img/backgrounds/pexels-photo-1145303.jpeg");
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    // opacity: 0.9;
 }
 
 #area-text-add {
@@ -255,17 +229,16 @@ input[type=password]:focus {
     height: 130px;
     border: 0;
     object-fit: scale-down;
-    // object-fit: cover;
 }
 
 #user-profile .form-control {
     border-radius: 15px;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
-// #user-profile ul {
-//     border-radius: 15px;
-// }
+#user-profile {
+    margin-top: 150px;
+}
 
 #user-wrapper {
     font-family: 'Work Sans', sans-serif;
@@ -273,7 +246,7 @@ input[type=password]:focus {
     background-repeat: no-repeat;
     font-family: 'Work Sans', sans-serif;
     background-size: cover;
-    padding-bottom: 510px; 
+    padding-bottom: 550px; 
 }
 
 .btn-edit a:hover {
@@ -310,14 +283,10 @@ padding-bottom: 130px;
     list-style: none;
     letter-spacing: .1em;
 }
-.edit-profile {
-    padding-top: 62px;
+#edit-profile {
+    margin-top: 100px;
 }
 
-// .edit-form input[type=file] {
-//     border-radius: 15px;
-//     opacity: 1;
-// }
 .edit-form input[type=text] {
     border-radius: 15px;
 }
@@ -352,7 +321,7 @@ padding-bottom: 130px;
     margin-bottom: 0;
     margin-top: 30px;
 } 
-.top-header img {   //book img
+.top-header img {   
     margin: auto;
     margin-top: 50px;
     display: block;

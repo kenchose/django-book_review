@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $( "#text-show" ).hide();
-    $( "#text-show" ).slideDown(2000)
+    $( "#text-show" ).fadeIn(2000)
        
     
     // var myBookId = $("#deleteId").data('id'); 

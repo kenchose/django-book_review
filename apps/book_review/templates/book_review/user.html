@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-2 form-group mt-2 edit-profile"> 
                             {% if user.profile_pic %}           
-                                <img class="profile-pic form-control" src="{{user.profile_pic.url}}">
+                                <img class="profile-pic form-control img-thumbnail" src="{{user.profile_pic.url}}">
                             {% endif %}
                             {% if curr_user.id == user.id %}
                                 <button class="btn btn-edit btn-primary text-danger form-control mt-2"><a href="/edit/{{user.id}}">Edit Profile</a></button>

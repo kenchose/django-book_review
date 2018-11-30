@@ -126,12 +126,10 @@ def update_user(request, user_id):
     if request.method == 'POST':
         curr_user=User.objects.get(id=user_id)
         validation=User.objects.editVal(request.POST, request.FILES, curr_user)
-        # try:
         if len(validation) > 0:
             for error in validation:
                 messages.error(request, error)
             return redirect ('/edit/{}'.format(user_id))
-        # except:
         else:
             curr_user = User.objects.updateUser(request.POST, request.FILES, curr_user)
             messages.success(request, "Your information have been successfully updated.")

@@ -38,7 +38,6 @@ class UserManager(models.Manager):
         return new_user
 
     def editVal(self, postData,  postFile, curr_user):
-    # def editVal(self, postData,  postFile, curr_user):
         user = User.objects.get(id=curr_user.id)
         error=[]
         if len(postData['name']) < 1 or len(postData['alias']) < 1 or len(postData['email']) < 1:
@@ -57,10 +56,9 @@ class UserManager(models.Manager):
             error.append('Password must be at least 8 characters long.')
         if postData['password'] != postData['password_confirmation']:
             error.append('Password and confirmation does not match.')
-        if user.profile_pic == postFile['profile_pic'] and user.name == postData['name'] and user.alias == postData['alias'] and user.email == postData['email'] and len(postData['password']) < 1 and len(postData['password_confirmation']) < 1:
-            error.append("You have made no changes to your profile.")
-        # if User.objects.filter(email__iexact=postData['email']):        #how to make it so that all emails EXCEPT YOUR OWN is acceptable
-        #     error.append('Email is already registered.')
+        if postData['email'] != user.email:
+            if User.objects.filter(email__iexact=postData['email']):
+                error.append('Email is already registered.')
         return error
 
         #can only edit if you change BOTH img or only just img another attribute
@@ -71,12 +69,23 @@ class UserManager(models.Manager):
         user.name=postData['name']
         user.alias=postData['alias']
         user.email=postData['email']
-        user.profile_pic=postFile['profile_pic']
+        user.profile_pic = postFile['profile_pic'] 
         if len(postData['password']) > 0:
             hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
             user.password=hashed_pw
         user.save()
         return user
+    # def updateUser(self, postData, postFile, curr_user):
+    #     user = User.objects.get(id=curr_user.id)
+    #     user.name=postData['name']
+    #     user.alias=postData['alias']
+    #     user.email=postData['email']
+    #     user.profile_pic=postFile['profile_pic']
+    #     if len(postData['password']) > 0:
+    #         hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+    #         user.password=hashed_pw
+    #     user.save()
+    #     return user
 
     def logVal(self, postData):
         error=[]
@@ -144,7 +153,7 @@ class User(models.Model):
     alias=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=255)
-    profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-profile.png")
+    profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="/profile_image/media/profile_image/default-profile.png")
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -154,7 +163,7 @@ class User(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    book_img=models.ImageField(upload_to="book_image", blank=True, default="profile_image/default-book.png")
+    book_img=models.ImageField(upload_to="book_image", blank=True, default="profile_image/default-book.png", null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):

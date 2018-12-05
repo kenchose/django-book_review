@@ -117,8 +117,13 @@
                             <h5><p>Rating: {{r.rating}}</p></h5>
                             <h5><p><a href="/user/{{r.writer.id}}" class="text-center">{{r.writer.name}}</a> wrote: {{r.content}}</p></h5>
                             {% if curr_user.id == r.writer.id %}
-                                <i id="deleteId" data-id="{{r.id}}" data-toggle="modal" data-target="#myModal"class="far fa-trash-alt"></i> 
-                                <!-- <a  id="deleteId" data-id="{{r.id}}" href='{{r.id}}' data-toggle="modal" data-target="#myModal"><i class="far fa-trash-alt"></i></a>  -->
+                                <!-- <i id="deleteId" data-id="{{r.id}}" data-toggle="modal" data-target="#myModal"class="far fa-trash-alt"></i>  -->
+                                <form action="/delete_confirmation/{{r.id}}" method="post">
+                                    {% csrf_token%}
+                                    <button type="submit" class="border-white">
+                                        <span><i class="far fa-trash-alt"></i></span> 
+                                    </button> 
+                                </form>
                             {% endif%}
                             <h9>Posted on: {{r.created_at}}</h9>
                         </div>

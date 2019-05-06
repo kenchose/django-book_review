@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+
+* {
+    padding:0;
+    margin:0;
+    font-size:1rem;
+}
+
+body, html {
+    font-family: 'Work Sans', sans-serif;
+    background-image:url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:100%
+}
+
+#wrapper {
+    min-height:100%;
+}
+
+.navbar-container {
+    background: rgb(61, 71, 79);
+    min-width: 100%;
+    padding:0;
+    opacity:0.7; 
+    #navbar-brand {            
+        color: rgb(171, 179, 181);
+        text-decoration: none;
+        &:hover {
+            color:greenyellow;
+        }
+        img {
+
+            margin-bottom:10px;
+        }
+    }
+    .nav-item {
+        padding:5px;
+    }
+    .nav-link {
+        color: rgb(171, 179, 181);
+        &:hover {
+            color:greenyellow;
+        }
+    }
+    .fa-book-open {
+        color: rgb(255, 0, 0);
+    }    
+}
+
+#main {
+    overflow:auto;
+    padding-bottom:50px; 
+    margin-top: 80px;
+}
+
+#brand-text {
+    font-size:25px;
+}
+
+
+.valid-style {
+    color:red;
+    font-weight: bold;
+    list-style: none;
+    letter-spacing: .1em;
+    padding-bottom: 12px;
+}
+
+#registration, #login {
+    padding:3rem;
+}
+
+.reg-singin{
+    .form-group {
+        input[type=text], input[type=email], input[type=password] {
+            border-radius: 15px;
+            opacity: 0.8;
+        }
+        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+            border-radius: 15px;
+            opacity: 1;
+        }
+    }    
+}
+
+.footer-info {
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+#main-footer-content {
+    background:#303036;
+    color:rgb(220, 220, 220);
+    margin-top:-40px;
+    .footer-content {
+        margin:2rem 0;
+    }
+    .quicklinks {
+        list-style-type: none;
+    }
+    .company-address {
+        margin-bottom:8px;
+    }
+    .social-media {
+        a {
+            color:rgb(220, 220, 220);
+            border: gray solid 1px;
+            width:41px;
+            height:45px;
+            margin-right:5px;
+            padding-top:6px;
+            text-align: center;
+            display:inline-block; 
+            font-size:16px;
+            border-radius:5px;
+            &:hover {
+                color:white;
+                border:white solid 1px;
+                transition:all 0.3s;
+            }
+        }
+    }
+    // @media (max-width:767px) {
+    //     margin-top:-1000px;
+    // }
+}
+
+#footer {
+    background:#343a40;
+    color:#d3d3d3; 
+    background:#343a40;
+    height:50px;
+    text-align: center;
+    bottom:0;
+    .copyright-text {
+        padding-top:15px;
+        margin-bottom:0; 
+    }
+}

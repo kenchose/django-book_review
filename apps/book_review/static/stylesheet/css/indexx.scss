@@ -4,7 +4,10 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-size:1rem;
 }
+
+
 
 blockquote::before {
     content: open-quote;
@@ -17,102 +20,102 @@ blockquote::after {
     font-size: 1.5em;
 }
 
-#reg-wrapper {
-    background:url("../../img/backgrounds/blur-book.jpg");
-    background-repeat: no-repeat;
-    font-family: 'Work Sans', sans-serif;
-    background-size: cover;
-    background-position:center;
-    padding-bottom: 150px;
-}
+// #reg-wrapper { //delete
+//     background:url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
+//     background-repeat: no-repeat;
+//     font-family: 'Work Sans', sans-serif;
+//     background-size: cover;
+//     background-position:center;
+//     padding-bottom: 150px;
+// }
 
-#reg-sign-main label {
-    margin-top: 15px;
-}
-.navbar-brand {
-    color: rgb(171, 179, 181);
-}
+// #reg-sign-main label {  delete
+//     margin-top: 15px;
+// }
 
-.navbar-brand:hover {
-    color:greenyellow;
-}
 
-.nav-link {
-    color: rgb(171, 179, 181);
-    
-}
-.nav-link:hover {
-    color:greenyellow;
-    // color:white;
-}
+// .navbar-brand {  delete
+//     color: rgb(171, 179, 181);
+// }
 
-header {
-    background: rgb(61, 71, 79);
-    width:100%;
-}
+// .navbar-brand:hover {
+//     color:greenyellow;
+// }
+
+// .nav-link {
+//     color: rgb(171, 179, 181);
+// }
+// .nav-link:hover {    delete
+//     color:greenyellow;
+// }
+
+// header {     delete
+//     background: rgb(61, 71, 79);
+//     width:100%;
+// }
 
 .validation {
     margin-top: 35px;
 }
 
-.valid-style {
-    color:red;
-    font-weight: bold;
-    list-style: none;
-    letter-spacing: .1em;
-    padding-bottom: 12px;
-}
+// .valid-style {   delete
+//     color:red;
+//     font-weight: bold;
+//     list-style: none;
+//     letter-spacing: .1em;
+//     padding-bottom: 12px;
+// }
 
-.navbar {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+// .navbar { delete
+//     width: 100%;
+//     margin: 0;
+//     padding: 0;
+// }
 
-.fa-book-open {
-    color: red;
-}
+// .fa-book-open {  delete
+//     color: red;
+// }
 
-#reg-sign {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    opacity: .9;
-    padding: 0;
-}
-#reg-sign-header {
-    opacity: .7;
-}
+// #reg-sign {
+//     margin-top: 50px;
+//     margin-bottom: 50px;
+//     opacity: .9;
+//     padding: 0;
+// }
+// #reg-sign-header {  delete
+//     opacity: .7;
+// }
 
-input[type=text] {
-    border-radius: 15px;
-    opacity: 0.8;
-}
-input[type=email] {
-    border-radius: 15px;
-    opacity: 0.8;
-}
-input[type=password] {
-    border-radius: 15px;
-    opacity: 0.8;
-}
-input[type=text]:focus {
-    opacity: 1;
-}
-input[type=email]:focus {
-    opacity: 1;
-}
-input[type=password]:focus {
-    opacity: 1;
-}
+// input[type=text] {  delete
+//     border-radius: 15px;
+//     opacity: 0.8;
+// }
+// input[type=email] { delete
+//     border-radius: 15px;
+//     opacity: 0.8;
+// }
+// input[type=password] { delete
+//     border-radius: 15px;
+//     opacity: 0.8;
+// }
+// input[type=text]:focus { delete
+//     opacity: 1;
+// }
+// input[type=email]:focus { delete
+//     opacity: 1;
+// }
+// input[type=password]:focus { delete
+//     opacity: 1;
+// }
+ 
+// #mainContainer {    delete
+//     margin-left: 40px;
+//     margin-right: 40px;
+// }
 
-#mainContainer {
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.nav-item {
-    text-align: right;
-}
+// .nav-item {
+//     text-align: right;
+// }
 
 
 
@@ -359,3 +362,4 @@ input[type=password]:focus {
 // @media only screen and (min-width:768px) {
 //     #register {
 //         grid-auto-rows:  !important;
+

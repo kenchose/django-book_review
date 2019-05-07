@@ -5,58 +5,143 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- <meta http-equiv="refresh" content="5" > -->
-        <!-- CSS file -->
-        <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
-        
+        <!-- FAVICON -->
+        <!-- {% load static %} -->
+        <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon"> 
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <!-- <meta http-equiv="refresh" content="8" > -->
         <!-- Fontawesome (icons) --> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <!-- CSS file -->
+        <link rel="stylesheet" href="./../../static/stylesheet/css/user.css">
         <title>User Profile</title>
     </head>
     <body>
-        <div id="user-wrapper">
-            <header>
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg"> 
-                        <a href="/home" class="navbar-brand display-5">Belp for Books</a>
-                        <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
-                            <span class="toggle"><i class="fas fa-book-open"></i></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                            <div class="dropdown float-right">
-                                {% if curr_user.id == user.id %}
-                                    <button class="btn btn-sm btn-danger  mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{curr_user.name}}
-                                    </button>
-                                    <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>                                    
-                                {% else %}
-                                    <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{curr_user.name}}
-                                    </button>
-                                    <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
-                                        <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
-                                        <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <form class="nav-item float-right" action="/logout" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm ml-1">Logout</button>
-                            </form>
+        <div id="wrapper">
+            <div class="container navbar-container">
+                <nav class="navbar navbar-expand-lg navvar-light">
+                    <a id='navbar-brand' href="/home"><img src="./../../static/book_review/img/brand.png" alt="brand-logo"><span id='brand-text'>elp</span></a>
+                    <button class="btn navbar-toggler" type='button' data-toggle="collapse" data-target="#navbarItem" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggle"><i class="fas fa-book-open"></i></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
+                        <div class="dropdown float-right">
+                            {% if curr_user.id == user.id %}
+                                <button class="btn btn-sm btn-danger  mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{curr_user.name}}
+                                </button>
+                                <a href="/books/add" class="btn btn-danger btn-sm mr-1">Add Book and Review</a>                                    
+                            {% else %}
+                                <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{curr_user.name}}
+                                </button>
+                                <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                    <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
+                                </div>
+                            {% endif %}
                         </div>
-                    </nav>
-                </div>
-            </header>
+                        <form class="nav-item float-right" action="/logout" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm ml-1">Logout</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
             
 
             <section id="user-profile">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-2 form-group mt-2 edit-profile"> 
+                    <div class="row user-profile">
+                        <div class="col-sm-6">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        {% if user.profile_pic %}
+                                            <img src="{{user.profile_pic.url}}" class="card-img" alt="profile-pic">
+                                        {% endif %}
+                                    </div>
+                                    {% if curr_user.id == user.id %}
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <h3 class="card-title">User Profile</h3>
+                                            <p class="card-text">Name: {{user.name}}</p>
+                                            <p class="card-text">Alias: {{user.alias}}</p>
+                                            <p class="card-text">Email: {{user.email}}</p>
+                                            <p class="card-text">Total Reviews: {{count}}</p>
+                                            <p class="card-text"><small class="text-muted">Belper since {{user.created_at}}</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn edit-btn btn-primary text-danger mt-3"><a href="/edit/{{user.id}}">Edit</a></button>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h3 class="card-title">User Profile</h3>
+                                            <p class="card-text">Name: {{user.name}}</p>
+                                            <p class="card-text">Alias: {{user.alias}}</p>
+                                            <p class="card-text">Email: {{user.email}}</p>
+                                            <p class="card-text">Total Reviews: {{count}}</p>
+                                            <p class="card-text"><small class="text-muted">Belper since {{user.created_at}}</small></p>
+                                        </div>
+                                    </div>    
+                                    {% endif %}            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2><strong>Books reviewed:</strong></h2>
+                            {% for r in reviews %}
+                                <ul>
+                                    <a href="/books/{{r.book.id}}"><u>{{r.book.title}} by {{r.book.author}}</u></a>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- <div class="form-row">
+                        <div class="form-group">
+                            <div class="col-4 col-sm-12 col-md-2 form-control edit-profile"> 
+                                {% if user.profile_pic %}           
+                                <img class="profile-pic form-control img-thumbnail" src="{{user.profile_pic.url}}">
+                                {% endif %}
+                                {% if curr_user.id == user.id %}
+                                <button class="btn btn-edit btn-primary text-danger form-control"><a href="/edit/{{user.id}}">Edit Profile</a></button>
+                                {% endif %}
+                            </div> 
+                        </div>
+                        <div class="col-4 col-sm-12 col-md-3 form-group">
+                            <div class="form-group">
+                                <h2><strong>User Profile</strong></h2>
+                                <h3 class="form-control">Name: {{user.name}}</h3>
+                                <h3 class="form-control">Alias: {{user.alias}}</h3>
+                                <h3 class="form-control">Email: {{user.email}}</h3>
+                                <h3 class="form-control">Total Reviews: {{count}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-12 col-md-7">
+                            <div class="form-group">
+                                <h2><strong>Books posted on:</strong></h2>
+                                {% for r in reviews %}
+                                    <ul>
+                                        <a href="/books/{{r.book.id}}"><u>{{r.book.title}} by {{r.book.author}}</u></a>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-sm-12 col-md-2 form-group mt-2 edit-profile"> 
                             {% if user.profile_pic %}           
                                 <img class="profile-pic form-control img-thumbnail" src="{{user.profile_pic.url}}">
                             {% endif %}
@@ -78,8 +163,7 @@
                                     <a href="/books/{{r.book.id}}"><u>{{r.book.title}} by {{r.book.author}}</u></a>
                                 </ul>
                             {% endfor %}
-                        </div>
-                    </div>
+                        </div> -->
 
                         <!--extra security and warning if edit button shows up for user that is not on their own profile account-->
 
@@ -98,9 +182,69 @@
                     </div>
                 </div>
             </section>
-        </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+
+            <section id='main-footer-content'> <!-- MAIN FOOTER CONTENT -->
+                <div class="container ">
+                    <div class="row footer-info">
+                        <div id='footer-content-contact' class="col-sm-4 footer-content">
+                            <h3>Belp the Book</h3>
+                            <p class='mt-4'>
+                                Belp is a successful book review website used by people from all across the world! Each review contains a short summary of the book, background of authors and topics, or anything you want.
+                            </p>
+                        </div>
+                        <div class="col-sm-4 footer-content">
+                            <h3>Quick Links</h3>
+                            <ul class='text-uppercase quicklinks mt-4'>
+                                <li>
+                                    <p><a href="#" class='link'>contact</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>events</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>e-books</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>blog</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>tell-a-friend</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#">help & support</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 footer-content company-info">
+                            <h3>Belp</h3>
+                            <p class='company-address mt-4'>Address:</p>
+                            <p class='company-address'>1234 Main St.</p>
+                            <p class='company-address'>San Franciso, CA 94115</p>
+                            <div class="contact-content">
+                                <p><i class="fas fa-phone pr-2"></i>123-456-7890</p>
+                                <p><i class="fas fa-envelope mr-2"></i>info@mywesite.com</p>
+                            </div>
+                            <div class="social-media">
+                                <a href="#"><i id="linkedin" class="fab fa-linkedin fa-2x"></i></a> 
+                                <a href="#"><i id="github" class="fab fa-github fa-2x"></i></a> 
+                                <a href="#"><i id="facebook" class="fab fa-facebook-square fa-2x"></i></a>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  <!-- MAIN FOOTER CONTENT -->    
+        </div> <!--WRAPPER-->
+
+        <footer id='footer'>  <!-- FOOTER -->
+            <div class="container">
+                <div class="footer-bottom">
+                    <p class="text-center copyright-text"><i class="far fa-copyright"> 2019 Belp | Designed by Kenny Pham</i></p> 
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
     </body>
 </html>

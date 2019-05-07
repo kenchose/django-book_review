@@ -9,21 +9,30 @@
 
 body, html {
   font-family: 'Work Sans', sans-serif;
-  background-image: url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 100%;
 }
 
 #wrapper {
   min-height: 100%;
+  background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+}
+
+.navbar-container {
+  background: #3d474f;
 }
 
 .navbar-container {
   background: #3d474f;
   min-width: 100%;
   padding: 0;
-  opacity: 0.7;
+}
+
+.navbar-container #brand-text {
+  font-size: 25px;
+}
+
+.navbar-container .collapse {
+  padding: 8px;
 }
 
 .navbar-container #navbar-brand {
@@ -39,10 +48,6 @@ body, html {
   margin-bottom: 10px;
 }
 
-.navbar-container .nav-item {
-  padding: 5px;
-}
-
 .navbar-container .nav-link {
   color: #abb3b5;
 }
@@ -55,50 +60,31 @@ body, html {
   color: red;
 }
 
-#main {
-  overflow: auto;
-  padding-bottom: 50px;
-  margin-top: 80px;
+#user-profile .user-profile {
+  margin-top: 4rem;
 }
 
-#brand-text {
-  font-size: 25px;
+#user-profile .edit-btn {
+  margin-right: 10px !important;
 }
 
-.validation {
-  margin-top: 35px;
+#user-profile .edit-btn a {
+  text-decoration: none;
+  color: white;
 }
 
-.valid-style {
-  color: red;
-  font-weight: bold;
-  list-style: none;
-  letter-spacing: .1em;
-  padding-bottom: 12px;
+#user-profile .edit-btn a:hover {
+  text-decoration: none;
+  color: white;
 }
 
-#registration, #login {
-  padding: 3rem;
-}
-
-.reg-singin .form-group input[type=text], .reg-singin .form-group input[type=email], .reg-singin .form-group input[type=password] {
-  border-radius: 15px;
-}
-
-.reg-singin .form-group input[type=text]:focus, .reg-singin .form-group input[type=email]:focus, .reg-singin .form-group input[type=password]:focus {
-  border-radius: 15px;
-  opacity: 1;
-}
-
-.footer-info {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+#user-profile .card {
+  padding: 20px;
 }
 
 #main-footer-content {
   background: #303036;
   color: gainsboro;
-  margin-top: -40px;
 }
 
 #main-footer-content .footer-content {
@@ -146,4 +132,4 @@ body, html {
   padding-top: 15px;
   margin-bottom: 0;
 }
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=user.css.map */

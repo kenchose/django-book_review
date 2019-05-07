@@ -24,7 +24,6 @@
 </head>
 <body>
     <div id='wrapper'>
-
         <!-- NAVBAR -->
         <div class="container navbar-container">
             <nav class="navbar navbar-expand-lg navvar-light">
@@ -57,10 +56,9 @@
         <section id="main">
             <div class="container">
                 <div class="row" id="mainContainer">
-                    
                     <div class="col-md-6" id="login">
                         <form action="login" method="post" class='reg-singin'>
-                            <!-- {% csrf_token %} -->
+                            {% csrf_token %}
                             <h2 class="text-left ">Login</h2>
                             <div class="form-row">
                                 <div class="col-10  form-group">
@@ -74,65 +72,63 @@
                                     <input type="password" name="password" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group offset-sm-1 ">
-                                    <button type="submit" class="btn btn-success form-control">Login</button>
-                                </div>
+                            <div >
+                                <button type="submit" class="btn btn-success ">Login</button>
                             </div>
                         </form>
                         <div class="container validation">
                             <div class="form-row">
                                 <ul class="col-10">
-                                    <!-- {%if messages%}
+                                    {%if messages%}
                                         {%for message in messages%}
-                                        <li class="text-left valid-style">{{message}}</li>
+                                            <li class="text-left valid-style">{{message}}</li>
                                         {%endfor%}
-                                        {%endif%} -->
-                                    </ul>
-                                </div>
+                                    {%endif%}
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-md-6" id='registration'>
-                            <h2>Register</h2>
-                            <form action="/register" method="post" class='reg-singin'>
-                                <!-- {% csrf_token %} -->
-                                <div class="form-row">
-                                    <div class="col-10 form-group">
-                                        <label for="name">Name:</label>
-                                        <input type="text" name="name" class="form-control">
-                                    </div>
-                                </div> 
-                                <div class="form-row">
-                                    <div class="col-10 form-group">
-                                        <label for="alias">Alias:</label>
-                                        <input type="text" name="alias" class="form-control">
-                                    </div>
-                                </div> 
-                                <div class="form-row"> 
-                                    <div class="col-10 form-group">
-                                        <label for="email">Email:</label>
-                                        <input type="email" name="email" class="form-control">
-                                    </div>
+                    </div>
+                    <div class="col-md-6" id='registration'>
+                        <h2>Register</h2>
+                        <form action="/register" method="post" class='reg-singin'>
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-10 form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" name="name" class="form-control">
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-10 form-group">
-                                        <label for="password">Password:</label>
-                                        <input type="password" name="password" class="form-control">
-                                    </div>
+                            </div> 
+                            <div class="form-row">
+                                <div class="col-10 form-group">
+                                    <label for="alias">Alias:</label>
+                                    <input type="text" name="alias" class="form-control">
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-10 form-group">
-                                        <label for="password_confirmation">Password Confirmation:</label>
-                                        <input type="password" name="password_confirmation" class="form-control">
-                                    </div>
+                            </div> 
+                            <div class="form-row"> 
+                                <div class="col-10 form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" class="form-control">
                                 </div>
-                                <div>
-                                    <button type="submit" class="btn btn-success">Register</button>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-10 form-group">
+                                    <label for="password">Password:</label>
+                                    <input type="password" name="password" class="form-control">
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-10 form-group">
+                                    <label for="password_confirmation">Password Confirmation:</label>
+                                    <input type="password" name="password_confirmation" class="form-control">
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-success">Register</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
         </section>  <!--MAIN CONTENT-->
         
         <section id='main-footer-content'> <!-- MAIN FOOTER CONTENT -->

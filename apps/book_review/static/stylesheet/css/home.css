@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Work Sans', sans-serif;
+  height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+}
+
+.navbar-container {
+  background: #3d474f;
+}
+
+.navbar-container {
+  background: #3d474f;
+  min-width: 100%;
+  padding: 0;
+}
+
+.navbar-container #brand-text {
+  font-size: 25px;
+}
+
+.navbar-container .collapse {
+  padding: 8px;
+}
+
+.navbar-container #navbar-brand {
+  color: #abb3b5;
+  text-decoration: none;
+}
+
+.navbar-container #navbar-brand:hover {
+  color: greenyellow;
+}
+
+.navbar-container #navbar-brand img {
+  margin-bottom: 10px;
+}
+
+.navbar-container .nav-link {
+  color: #abb3b5;
+}
+
+.navbar-container .nav-link:hover {
+  color: greenyellow;
+}
+
+.navbar-container .fa-book-open {
+  color: red;
+}
+
+#top-header {
+  background: url("./../../book_review/img/backgrounds/belp-home4.jpeg") no-repeat center;
+  background-size: cover;
+  color: #65662a;
+  padding-bottom: 55%;
+  padding-top: 50px;
+}
+
+#center-content {
+  margin-top: 4rem;
+}
+
+#center-content .icon {
+  margin-bottom: 2rem;
+}
+
+#center-content .fas {
+  font-size: 50px;
+}
+
+#center-content .center-col-content {
+  font-size: 25px;
+}
+
+.card {
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  -webkit-transition: -webkit-transform 400ms box-shadow 400ms;
+  transition: -webkit-transform 400ms box-shadow 400ms;
+  transition: transform 400ms box-shadow 400ms;
+  transition: transform 400ms box-shadow 400ms, -webkit-transform 400ms box-shadow 400ms;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 15px 70px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 70px rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.card img {
+  margin: auto;
+  display: block;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+blockquote::before {
+  content: open-quote;
+  color: #cc0000;
+  font-size: 1.5em;
+}
+
+blockquote::after {
+  content: close-quote;
+  color: #cc0000;
+  font-size: 1.5em;
+}
+
+#old-reviews {
+  margin-bottom: 45px;
+  background-color: #f6f6f6;
+}
+
+#last-hr:last-child {
+  display: none;
+}
+
+#main-footer-content {
+  background: #303036;
+  color: gainsboro;
+  margin-top: -40px;
+}
+
+#main-footer-content .footer-content {
+  margin: 2rem 0;
+}
+
+#main-footer-content .quicklinks {
+  list-style-type: none;
+}
+
+#main-footer-content .company-address {
+  margin-bottom: 8px;
+}
+
+#main-footer-content .social-media a {
+  color: gainsboro;
+  border: gray solid 1px;
+  width: 41px;
+  height: 45px;
+  margin-right: 5px;
+  padding-top: 6px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#main-footer-content .social-media a:hover {
+  color: white;
+  border: white solid 1px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#footer {
+  background: #343a40;
+  color: #d3d3d3;
+  background: #343a40;
+  height: 50px;
+  text-align: center;
+  bottom: 0;
+}
+
+#footer .copyright-text {
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=home.css.map */

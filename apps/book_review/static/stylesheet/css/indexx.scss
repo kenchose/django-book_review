@@ -9,16 +9,6 @@
 
 
 
-blockquote::before {
-    content: open-quote;
-    color: #cc0000;
-    font-size: 1.5em;
-}
-blockquote::after {
-    content: close-quote;
-    color: #cc0000;
-    font-size: 1.5em;
-}
 
 // #reg-wrapper { //delete
 //     background:url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
@@ -49,14 +39,14 @@ blockquote::after {
 //     color:greenyellow;
 // }
 
-// header {     delete
+// header {     //delete
 //     background: rgb(61, 71, 79);
 //     width:100%;
 // }
 
-.validation {
-    margin-top: 35px;
-}
+// .validation {
+//     margin-top: 35px;
+// }
 
 // .valid-style {   delete
 //     color:red;
@@ -126,80 +116,38 @@ blockquote::after {
 
 
 
-#home-wrapper {
-    font-family: 'Work Sans', sans-serif;
-}
 
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-}
+// #myVideo { unkown
+//     position: fixed;
+//     right: 0;
+//     bottom: 0;
+//     min-width: 100%; 
+//     min-height: 100%;
+// }
 
 
-.top{
-    background:url("../../img/backgrounds/belp-home4.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: rgb(56, 64, 71);
-    padding-bottom: 55%;
-    padding-top: 50px;
-}
 
-#text-awaits {
-    color: rgb(101, 102, 42);
-}
 
-#recent-review {
-    margin-top: 50px;
-}
 
-#other-reviews-home {
-    margin: 0;
-    background-color: #f6f6f6;
-}
 
-.review-box {
-    border-radius: 15px;
-}
+// .review-box {
+//     border-radius: 15px;
+// }
 
-.review-box:hover {
-    background-color:white;
-}
+// .review-box:hover {
+//     background-color:white;
+// }
 
-#scrollBar {
-    height: 50%;
-    border-radius: 15px;
-}
+// #scrollBar {
+//     height: 50%;
+//     border-radius: 15px;
+// }
 
-#scrollBar:hover {
-    background-color: white;
-}
+// #scrollBar:hover {
+//     background-color: white;
+// }
 
-.card {
-    box-shadow: 0 5px 15px rgba(0,0,0,.15);
-    position: relative;
-    transition: transform 400ms box-shadow 400ms;
-}
 
-.card:hover {
-    box-shadow: 0 15px 70px rgba(0,0,0,.20);
-    transform: scale(1.01);
-}
-
-.card img {
-    margin: auto;
-    display: block;
-    object-fit: scale-down;
-}
-.book-id  {
-    border-radius: 30px;
-    padding-left: 12px;
-    background-color: #bcc1b5;
-    border: 1px solid black;
-}
 
 
 
@@ -227,40 +175,10 @@ blockquote::after {
 
 
 
-.profile-pic.form-control {
-    width: 150px;
-    height: 130px;
-    border: 0;
-    object-fit: scale-down;
-}
 
-#user-profile .form-control {
-    border-radius: 15px;
-    margin-top: 30px;
-}
 
-// #user-profile {
-//     margin-top: 150px;
-// }
 
-#user-wrapper {
-    font-family: 'Work Sans', sans-serif;
-    background:url("../../img/backgrounds/wood.jpeg");
-    background-repeat: no-repeat;
-    font-family: 'Work Sans', sans-serif;
-    background-size: cover;
-    padding-bottom: 550px; 
-}
 
-.btn-edit a:hover {
-    text-decoration: none;
-    color: white;
-}
-
-.btn-edit a {
-    text-decoration: none;
-    color: white;
-}
 
 
 

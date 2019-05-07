@@ -10,21 +10,27 @@
 
 body, html {
     font-family: 'Work Sans', sans-serif;
-    background-image:url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
-    background-size:cover;
-    background-repeat: no-repeat;
     height:100%
 }
 
 #wrapper {
     min-height:100%;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
 }
 
 .navbar-container {
     background: rgb(61, 71, 79);
+}
+.navbar-container {
+    background: rgb(61, 71, 79);
     min-width: 100%;
     padding:0;
-    opacity:0.7; 
+    #brand-text {
+        font-size:25px;
+    }
+    .collapse {
+        padding:8px;
+    }
     #navbar-brand {            
         color: rgb(171, 179, 181);
         text-decoration: none;
@@ -35,9 +41,6 @@ body, html {
             margin-bottom:10px;
         }
     }
-    .nav-item {
-        padding:5px;
-    }
     .nav-link {
         color: rgb(171, 179, 181);
         &:hover {
@@ -46,57 +49,34 @@ body, html {
     }
     .fa-book-open {
         color: rgb(255, 0, 0);
-    }    
+    }  
 }
 
-#main {
-    overflow:auto;
-    padding-bottom:50px; 
-    margin-top: 80px;
-}
-
-#brand-text {
-    font-size:25px;
-}
-
-.validation {
-    margin-top: 35px;
-}
-
-.valid-style {
-    color:red;
-    font-weight: bold;
-    list-style: none;
-    letter-spacing: .1em;
-    padding-bottom: 12px;
-}
-
-#registration, #login {
-    padding:3rem;
-}
-
-.reg-singin{
-    .form-group {
-        input[type=text], input[type=email], input[type=password] {
-            border-radius: 15px;
-            // opacity: 0.1;
+#user-profile {
+    .user-profile {
+        margin-top:4rem;
+    }
+    
+    .edit-btn {
+        margin-right:10px !important;
+    }
+    .edit-btn a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+            text-decoration: none;
+            color: white;
+    
         }
-        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
-            border-radius: 15px;
-            opacity: 1;
-        }
-    }    
-}
-
-.footer-info {
-    padding-left:0px !important;
-    padding-right:0px !important;
+    }
+    .card {
+        padding:20px;
+    }
 }
 
 #main-footer-content {
     background:#303036;
     color:rgb(220, 220, 220);
-    margin-top:-40px;
     .footer-content {
         margin:2rem 0;
     }

@@ -1,7 +1,6 @@
 $(document).ready(function(){
-    $( "#text-show" ).hide();
-    $( "#text-show" ).fadeIn(2000)
-       
+    $( "#text-await" ).hide(4000);
+    $( "#text-show " ).fadeIn(2000)
     
     // var myBookId = $("#deleteId").data('id'); 
         // myBookId.each(function(){

@@ -5,19 +5,53 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- <meta http-equiv="refresh" content="5" > -->
-        <!-- CSS file -->
-        <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
-        
+        <!-- FAVICON -->
+        <!-- {% load static %} -->
+        <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon"> 
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <!-- <meta http-equiv="refresh" content="8" > -->
         <!-- Fontawesome (icons) --> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <!-- CSS file -->
+        <link rel="stylesheet" href="./../../static/stylesheet/css/home.css">
         <title>Belp Dashboard</title>
     </head>
     <body>
-        <div id="home-wrapper">
-            <header>
+        <div id="wrapper">
+            <div class="container navbar-container">
+                <nav class="navbar navbar-expand-lg navvar-light">
+                    <a id='navbar-brand' href="/home"><img src="./../../static/book_review/img/brand.png" alt="brand-logo"><span id='brand-text'>elp</span></a>
+                    <button class="btn navbar-toggler" type='button' data-toggle="collapse" data-target="#navbarItem" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggle"><i class="fas fa-book-open"></i></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
+                        <div class="dropdown float-right">
+                            <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{curr_user.name}}
+                            </button>    
+                            <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
+                            </div>
+                            <form class="nav-item float-right" action="/logout" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>               
+            <!-- <header>
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg"> 
                         <a href="/home" class="navbar-brand display-5">Belp for Books</a>
@@ -43,26 +77,43 @@
                         </div>
                     </nav>
                 </div>
-            </header>
+            </header> -->
             
             
-            <section class="top">
-                <div id="text-awaits" class="container" >
-                    <h1 id="text-show" class="display-4 text-center">Your next review awaits!</h1>
+            <section id="center-content">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-sm-4 icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="col-sm-4 icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="col-sm-4 icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p class="center-col-content">Join a community of people who love to read and share their most loved books.</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="center-col-content">Build and start a book club from all over the world.</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="center-col-content">Start writing your own book and see what people think.</p>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
             </section>
-
 
             <section id="recent-review">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 text-center mt-4 mb-4">
-                            <h2><i class="fas fa-chevron-circle-down"></i> <span style="color: #cc0000"><u>Recent Book Reviews</u></span> <i class="fas fa-chevron-circle-down"></i></h2>
-                        </div>
                         <div class="card-columns">
                             {% for r in reviews %}
                                 <div class="card mt-3 pt-3">
-                                    <!-- <h1>{{r.id}}</h1> -->
                                     <img class="card-img-top" src="{{r.book.book_img.url}}" alt="Book image"> 
                                     <div class="card-body">
                                         <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5> 
@@ -79,7 +130,7 @@
             </section>
 
             
-            <section id="other-reviews-home">
+            <section id="old-reviews">
                 <div class="container">
                     <div class='row d-block'>
                         <div id="other-reviews" class="mt-4 pt-4 ">
@@ -89,9 +140,6 @@
                             <div id="all-reviews" class="liner">
                                 <div class="container">
                                     <div class="row">
-                                        <!-- <div class="col-md-1">
-                                            <h2 class="book-id">{{r.id}}</h2>
-                                        </div> -->
                                         <div class="col-md-11">
                                             <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
                                             <p>Rating: {{r.rating}}</p>
@@ -101,18 +149,80 @@
                                     </div>
                                     <!-- <h2 class="border border-radius d-inline">{{r.id}}</h2> -->
                                 </div>
+                            </div>
+                            <hr id='last-hr'>
                             {% endfor %}
                         </div>
                     </div>
                 </div> 
             </section>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
 
+            <section id='main-footer-content'> <!-- MAIN FOOTER CONTENT -->
+                <div class="container ">
+                    <div class="row footer-info">
+                        <div id='footer-content-contact' class="col-sm-4 footer-content">
+                            <h3>Belp the Book</h3>
+                            <p class='mt-4'>
+                                Belp is a successful book review website used by people from all across the world! Each review contains a short summary of the book, background of authors and topics, or anything you want.
+                            </p>
+                        </div>
+                        <div class="col-sm-4 footer-content">
+                            <h3>Quick Links</h3>
+                            <ul class='text-uppercase quicklinks mt-4'>
+                                <li>
+                                    <p><a href="#" class='link'>contact</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>events</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>e-books</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>blog</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>tell-a-friend</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#">help & support</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 footer-content company-info">
+                            <h3>Belp</h3>
+                            <p class='company-address mt-4'>Address:</p>
+                            <p class='company-address'>1234 Main St.</p>
+                            <p class='company-address'>San Franciso, CA 94115</p>
+                            <div class="contact-content">
+                                <p><i class="fas fa-phone pr-2"></i>123-456-7890</p>
+                                <p><i class="fas fa-envelope mr-2"></i>info@mywesite.com</p>
+                            </div>
+                            <div class="social-media">
+                                <a href="#"><i id="linkedin" class="fab fa-linkedin fa-2x"></i></a> 
+                                <a href="#"><i id="github" class="fab fa-github fa-2x"></i></a> 
+                                <a href="#"><i id="facebook" class="fab fa-facebook-square fa-2x"></i></a>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  <!-- MAIN FOOTER CONTENT -->    
+        </div> <!--WRAPPER-->
+        
+        <footer id='footer'>  <!-- FOOTER -->
+            <div class="container">
+                <div class="footer-bottom">
+                    <p class="text-center copyright-text"><i class="far fa-copyright"> 2019 Belp | Designed by Kenny Pham</i></p> 
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    
         <!--Javascript-->
         <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <script type="text/javascript" src="../static/book_review/js/book_show.js"></script>        
+        <script type="text/javascript" src="./../../static/book_review/js/book_show.js"></script>        
     </body>
 </html>

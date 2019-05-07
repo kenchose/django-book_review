@@ -10,9 +10,6 @@
 
 body, html {
     font-family: 'Work Sans', sans-serif;
-    background-image:url("./../../../static/book_review/img/backgrounds/blur-book.jpg");
-    background-size:cover;
-    background-repeat: no-repeat;
     height:100%
 }
 
@@ -22,9 +19,17 @@ body, html {
 
 .navbar-container {
     background: rgb(61, 71, 79);
+}
+.navbar-container {
+    background: rgb(61, 71, 79);
     min-width: 100%;
     padding:0;
-    opacity:0.7; 
+    #brand-text {
+        font-size:25px;
+    }
+    .collapse {
+        padding:8px;
+    }
     #navbar-brand {            
         color: rgb(171, 179, 181);
         text-decoration: none;
@@ -35,9 +40,6 @@ body, html {
             margin-bottom:10px;
         }
     }
-    .nav-item {
-        padding:5px;
-    }
     .nav-link {
         color: rgb(171, 179, 181);
         &:hover {
@@ -46,51 +48,68 @@ body, html {
     }
     .fa-book-open {
         color: rgb(255, 0, 0);
-    }    
+    }  
 }
 
-#main {
-    overflow:auto;
-    padding-bottom:50px; 
-    margin-top: 80px;
+#top-header{
+    background:url("./../../book_review/img/backgrounds/belp-home4.jpeg") no-repeat center;
+    background-size: cover;
+    color: rgb(101, 102, 42);
+    padding-bottom: 55%;
+    padding-top: 50px;
 }
 
-#brand-text {
-    font-size:25px;
+#center-content {
+    margin-top:4rem;
+    .icon {
+        margin-bottom:2rem;
+    }
+    .fas {
+        font-size:50px;
+    }
+    .center-col-content {
+        font-size: 25px;
+    }
+}
+.card {
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    position: relative;
+    transition: transform 400ms box-shadow 400ms;
+    &:hover {
+        box-shadow: 0 15px 70px rgba(0,0,0,.20);
+        transform: scale(1.01);
+    }
+    img {
+        margin:auto;
+        display:block;
+        object-fit: scale-down;
+    }
 }
 
-.validation {
-    margin-top: 35px;
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-.valid-style {
-    color:red;
-    font-weight: bold;
-    list-style: none;
-    letter-spacing: .1em;
-    padding-bottom: 12px;
+blockquote::before {
+    content: open-quote;
+    color: #cc0000;
+    font-size: 1.5em;
+}
+blockquote::after {
+    content: close-quote;
+    color: #cc0000;
+    font-size: 1.5em;
 }
 
-#registration, #login {
-    padding:3rem;
+#old-reviews {
+    margin-bottom: 45px;
+    background-color: #f6f6f6;
 }
 
-.reg-singin{
-    .form-group {
-        input[type=text], input[type=email], input[type=password] {
-            border-radius: 15px;
-            // opacity: 0.1;
-        }
-        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
-            border-radius: 15px;
-            opacity: 1;
-        }
-    }    
-}
-
-.footer-info {
-    padding-left:0px !important;
-    padding-right:0px !important;
+#last-hr:last-child {
+    display:none;
 }
 
 #main-footer-content {

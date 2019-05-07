@@ -75,8 +75,20 @@ body, html {
   margin-bottom: 2rem;
 }
 
-#center-content .fas {
+#center-content .fas, #center-content .far {
   font-size: 50px;
+}
+
+#center-content .icon-comment {
+  color: #5BC236;
+}
+
+#center-content .icon-globe {
+  color: #0077be;
+}
+
+#center-content .icon-book {
+  color: #696969;
 }
 
 #center-content .center-col-content {
@@ -131,6 +143,10 @@ blockquote::after {
   background-color: #f6f6f6;
 }
 
+#old-reviews .old-review-content {
+  padding-bottom: 15px;
+}
+
 #last-hr:last-child {
   display: none;
 }
@@ -139,6 +155,10 @@ blockquote::after {
   background: #303036;
   color: gainsboro;
   margin-top: -40px;
+}
+
+#main-footer-content .footer-info {
+  padding-top: 15px;
 }
 
 #main-footer-content .footer-content {

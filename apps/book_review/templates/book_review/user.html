@@ -63,8 +63,9 @@
             <section id="user-profile">
                 <div class="container">
                     <div class="row user-profile">
-                        <div class="col-sm-6">
-                            <div class="card mb-3" style="max-width: 540px;">
+                        <div class="col-sm-8">
+                            <div class="card mb-3">
+                            <!-- <div class="card mb-3" style="max-width: 540px;"> -->
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         {% if user.profile_pic %}
@@ -83,7 +84,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <button class="btn edit-btn btn-primary text-danger mt-3"><a href="/edit/{{user.id}}">Edit</a></button>
+                                        <button class="btn edit-btn btn-primary text-danger"><a href="/edit/{{user.id}}">Edit</a></button>
                                     </div>
                                     {% else %}
                                     <div class="col-md-8">
@@ -100,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4 offset-sm-2 book-review-offset">
                             <h2><strong>Books reviewed:</strong></h2>
                             {% for r in reviews %}
                                 <ul>

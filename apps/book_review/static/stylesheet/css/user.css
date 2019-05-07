@@ -80,6 +80,21 @@ body, html {
 
 #user-profile .card {
   padding: 20px;
+  max-width: 840px;
+}
+
+#user-profile .card .card-body {
+  padding-top: 0px;
+}
+
+@media (max-width: 767px) {
+  #user-profile .card .card-body {
+    padding-left: 0px;
+  }
+}
+
+#user-profile .book-review-offset {
+  margin: 0px;
 }
 
 #main-footer-content {

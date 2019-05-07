@@ -58,14 +58,22 @@ body, html {
     padding-bottom: 55%;
     padding-top: 50px;
 }
-
 #center-content {
     margin-top:4rem;
     .icon {
         margin-bottom:2rem;
     }
-    .fas {
+    .fas, .far {
         font-size:50px;
+    }
+    .icon-comment {
+        color:#5BC236;
+    }
+    .icon-globe {
+        color: #0077be;
+    }
+    .icon-book {
+        color:#696969;
     }
     .center-col-content {
         font-size: 25px;
@@ -106,6 +114,9 @@ blockquote::after {
 #old-reviews {
     margin-bottom: 45px;
     background-color: #f6f6f6;
+    .old-review-content {
+        padding-bottom:15px;
+    }
 }
 
 #last-hr:last-child {
@@ -116,6 +127,9 @@ blockquote::after {
     background:#303036;
     color:rgb(220, 220, 220);
     margin-top:-40px;
+    .footer-info {
+        padding-top:15px;
+    }
     .footer-content {
         margin:2rem 0;
     }

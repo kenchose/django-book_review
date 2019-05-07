@@ -14,7 +14,7 @@
         <link rel="manifest" href="/site.webmanifest">
         <!-- <meta http-equiv="refresh" content="8" > -->
         <!-- Fontawesome (icons) --> 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         
         <!-- Bootstrap -->
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -84,13 +84,13 @@
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-sm-4 icon">
-                            <i class="fas fa-comments"></i>
+                            <i class="fas fa-comments icon-comment"></i>
                         </div>
                         <div class="col-sm-4 icon">
-                            <i class="fas fa-globe"></i>
+                            <i class="fas fa-globe-americas icon-globe"></i>
                         </div>
                         <div class="col-sm-4 icon">
-                            <i class="fas fa-book"></i>
+                            <i class="fas fa-book icon-book"></i>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +98,7 @@
                             <p class="center-col-content">Join a community of people who love to read and share their most loved books.</p>
                         </div>
                         <div class="col-sm-4">
-                            <p class="center-col-content">Build and start a book club from all over the world.</p>
+                            <p class="center-col-content">Start a book club with readers from all over the world.</p>
                         </div>
                         <div class="col-sm-4">
                             <p class="center-col-content">Start writing your own book and see what people think.</p>
@@ -139,7 +139,7 @@
                             {% for r in other_r %}
                             <div id="all-reviews" class="liner">
                                 <div class="container">
-                                    <div class="row">
+                                    <div class="row old-review-content">
                                         <div class="col-md-11">
                                             <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
                                             <p>Rating: {{r.rating}}</p>

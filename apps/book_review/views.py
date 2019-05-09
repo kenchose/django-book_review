@@ -16,7 +16,6 @@ def home (request):
         all_reviews = Review.objects.all().order_by('-id')[:6]
         all_books = Book.objects.all().order_by('-id')[6:]
         other_reviews = Review.objects.all().order_by('-id')[6:]
-        # all_other_reviews = other_reviews[8:]
         context = {
             'curr_user': user,
             'users': all_users,
@@ -78,7 +77,7 @@ def add(request):
                 messages.error(request, error)
             return redirect ('/books/add')
         else:
-            result = Review.objects.addBookReview(request.POST, curr_user)
+            result = Review.objects.addBookReview(request.POST, curr_user, request.FILES)
             return redirect ('/books/{}'.format(result.book.id))
     else:
         return redirect ('/books/add')
@@ -133,7 +132,7 @@ def update_user(request, user_id):
         else:
             curr_user = User.objects.updateUser(request.POST, request.FILES, curr_user)
             messages.success(request, "Your information have been successfully updated.")
-            return redirect ('/edit/{}'.format(curr_user.id))
+            return redirect ('/user/{}'.format(curr_user.id))
     else:
         return redirect ('/edit/{}'.format(user_id))
 
@@ -167,12 +166,8 @@ def delete(request, review_id):
             return redirect ("/books/{}".format(self.review_id))
         else:
             review_id.delete()
-            return redirect ("/books/{}".format(self.review_id))
-        # context = {
-        #     'user':user,
-        #     'review':review
-        # }
-        # return render(request, 'book_review/delete.html', context)
+            return redirect ("/books/{}".format(self.review_id.book.id))
+            # return redirect ("/book/{}".format(self.review_id)
     else:
         return redirect ("/books/{}".format(self.review_id.book.id))
 

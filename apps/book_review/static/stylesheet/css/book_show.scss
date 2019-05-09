@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+
+* {
+    padding:0;
+    margin:0;
+    font-size:1rem;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Work Sans', sans-serif;
+    height:100%
+}
+
+#wrapper {
+    min-height:100%;
+}
+
+.navbar-container {
+    background: rgb(61, 71, 79);
+}
+.navbar-container {
+    background: rgb(61, 71, 79);
+    min-width: 100%;
+    padding:0;
+    #brand-text {
+        font-size:25px;
+    }
+    .collapse {
+        padding:8px;
+    }
+    #navbar-brand {            
+        color: rgb(171, 179, 181);
+        text-decoration: none;
+        &:hover {
+            color:greenyellow;
+        }
+        img {
+            margin-bottom:10px;
+        }
+    }
+    .nav-link {
+        color: rgb(171, 179, 181);
+        &:hover {
+            color:greenyellow;
+        }
+    }
+    .fa-book-open {
+        color: rgb(255, 0, 0);
+    }  
+}
+
+
+#book-show {
+    .top-header {
+        .book-img{
+            margin:50px auto;
+            max-width:300px;
+            max-height:300px;
+            display:block;
+            object-fit:scale-down;
+        }
+        u {
+            font-size:25px;
+        }
+    }
+    .user-review {
+        margin:1rem 0;
+        min-width:100vw;
+    }
+    .profile-pic {
+        max-height: 100px;
+        max-width: 100px;
+        object-fit: contain;
+    }
+    .form-review {
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+    .rating {
+        margin-top:1rem;
+    }
+    hr {
+        margin:2rem 0;
+        border: 0;
+        height: 1px;
+        max-width:100vw;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        &:last-child {
+            display:none;
+        }
+    }    
+    .trash-btn {
+        background-color:transparent;
+        border:transparent;
+        color:red;
+    }
+}
+
+
+#main-footer-content {
+    background:#303036;
+    color:rgb(220, 220, 220);
+    margin-top:2rem;
+    .footer-info {
+        padding-top:15px;
+    }
+    .footer-content {
+        margin:2rem 0;
+    }
+    .quicklinks {
+        list-style-type: none;
+    }
+    .company-address {
+        margin-bottom:8px;
+    }
+    .social-media {
+        a {
+            color:rgb(220, 220, 220);
+            border: gray solid 1px;
+            width:41px;
+            height:45px;
+            margin-right:5px;
+            padding-top:6px;
+            text-align: center;
+            display:inline-block; 
+            font-size:16px;
+            border-radius:5px;
+            &:hover {
+                color:white;
+                border:white solid 1px;
+                transition:all 0.3s;
+            }
+        }
+    }
+}
+
+#footer {
+    background:#343a40;
+    color:#d3d3d3; 
+    background:#343a40;
+    height:50px;
+    text-align: center;
+    bottom:0;
+    .copyright-text {
+        padding-top:15px;
+        margin-bottom:0; 
+    }
+}

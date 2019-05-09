@@ -55,43 +55,4 @@
 .val-update ul {
   margin-top: 15px;
 }
-
-#book-wrapper {
-  font-family: 'Work Sans', sans-serif;
-}
-
-.top-header p {
-  margin-bottom: 0;
-  margin-top: 30px;
-}
-
-.top-header img {
-  margin: auto;
-  margin-top: 50px;
-  display: block;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-}
-
-.liner::before {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  background: gray;
-}
-
-.profile-pic {
-  width: 150px;
-  height: 130px;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-}
-
-.fa-trash-alt {
-  color: red;
-  cursor: pointer;
-}
 /*# sourceMappingURL=indexx.css.map */

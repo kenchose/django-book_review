@@ -5,93 +5,105 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- <meta http-equiv="refresh" content="8" > -->
-        <!-- CSS file -->
-        <link rel="stylesheet" href="../../static/book_review/sass/css/index.css">
-
+        <!-- FAVICON -->
+        <!-- {% load static %} -->
+        <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" type="image/x-icon"> 
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <!-- <meta http-equiv="refresh" content="8" > -->
         <!-- Fontawesome (icons) --> 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <!-- CSS file -->
+        <link rel="stylesheet" href="./../../static/stylesheet/css/book_show.css">
         <title>Book</title>
     </head>
     <body>
-        <div id="book-wrapper">
-            <div class="modal fade" id="myModal"> <!--fade is a transition animator-->
-                <div class="modal-dialog"> <!--creates dialog within the modal-->
-                    <div class="modal-content"> <!--different contants that are within the dialog which will give it some padding-->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Delete Review</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure you want to delete this review?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <form  action="/review/delete/" method="post" id="actionVal">
-                                {% csrf_token %}
-                                <button class="btn btn-danger" type="submit">Yes</button>
-                            </form>
-                            <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        </div>
+        <div class="modal fade" id="myModal"> <!--fade is a transition animator-->
+            <div class="modal-dialog"> <!--creates dialog within the modal-->
+                <div class="modal-content"> <!--different contants that are within the dialog which will give it some padding-->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Review</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this review?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form  action="/review/delete/" method="post" id="actionVal">
+                            {% csrf_token %}
+                            <button class="btn btn-danger" type="submit">Yes</button>
+                        </form>
+                        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
-            <header>
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg"> 
-                        <a href="/home" class="navbar-brand display-5">Belp for Books</a>
-                        <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
-                            <span class="toggle"><i class="fas fa-book-open"></i></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                            <div class="dropdown float-right">
-                                <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{curr_user.name}}
-                                </button>
-                                <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
-                                    <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>                                </div>
-                                <form class="nav-item float-right" action="/logout" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-                                </form>
+        </div>
+        <div id="wrapper">
+            <div class="container navbar-container">
+                <nav class="navbar navbar-expand-lg navvar-light">
+                    <a id='navbar-brand' href="/home"><img src="./../../static/book_review/img/brand.png" alt="brand-logo"><span id='brand-text'>elp</span></a>
+                    <button class="btn navbar-toggler" type='button' data-toggle="collapse" data-target="#navbarItem" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggle"><i class="fas fa-book-open"></i></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
+                        <div class="dropdown float-right">
+                            <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{curr_user.name}}
+                            </button>    
+                            <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
+                                <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
+                                <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
                             </div>
+                            <form class="nav-item float-right" action="/logout" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                            </form>
                         </div>
-                    </nav>
-                </div>
-            </header>
-
+                    </div>
+                </nav>
+            </div>                   
 
             <section id="book-show">
-                <div class="top-header">
-                    <img class="book_img img-thumbnail" src="{{curr_book.book_img.url}}">
-                    <h2 class="text-center"><p><u>{{curr_book.title}}</u></p></h2>
-                    <p class="text-center"><small>by {{curr_book.author}}</small></p>
-                </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 col-md-8 mb-4">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="top-header">
+                                <img class="book-img img-thumbnail" src="{{curr_book.book_img.url}}">
+                                <p class="text-center"><u>{{curr_book.title}}</u></p>
+                                <p class="text-center"><small>by {{curr_book.author}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8 offset-md-2 form-review">
                             <form action="/add_review/{{curr_book.id}}" method="post">
                                 {% csrf_token %}
-                                <label for="review"></label>
-                                <p><textarea id="area-text-add" name="content" class="form-control" rows="10" placeholder="Write a review..."></textarea></p>
-                                <label for="rating">Rating</label>
-                                <select name="rating" class="col-md-2">
-                                    <option value='1'>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option> 
-                                    <option value='5'>5</option>
-                                </select>
-                                <button class="btn btn-danger btn-sm float-right">Submit</button>
+                                <div class="form-group">
+                                    <p><textarea id="area-text-add" name="content" class="form-control" rows="10" placeholder="Write a review..."></textarea></p>
+                                </div>
+                                <div>
+                                    <label class="form-label">Rating</label>   <!--create ratings into stars and not numbers-->
+                                    <select name="rating">
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option> 
+                                        <option value='5'>5</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-danger  float-right ">Submit</button>
+                                </div>
                             </form>                                                          
                         </div>
-
-                        <!--create ratings into stars and not numbers-->
-
+                    <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="container validation">
                                 <div id="val" class="row">
@@ -106,38 +118,104 @@
                             </div>
                         </div>
                     </div>
-                    {% for r in book_reviews%}
-                    <div class="row liner">
-                        <div class="col-sm-12 col-md-2">
-                            {% if r.writer.profile_pic %}
-                                <img class="profile-pic" src="{{r.writer.profile_pic.url}}" alt="profile-pic">
-                            {% endif %} 
-                        </div>
-                        <div class="col-sm-12 col-md-10">
-                            <h5><p>Rating: {{r.rating}}</p></h5>
-                            <h5><p><a href="/user/{{r.writer.id}}" class="text-center">{{r.writer.name}}</a> wrote: {{r.content}}</p></h5>
-                            {% if curr_user.id == r.writer.id %}
-                                <!-- <i id="deleteId" data-id="{{r.id}}" data-toggle="modal" data-target="#myModal"class="far fa-trash-alt"></i>  -->
-                                <form action="/delete_confirmation/{{r.id}}" method="post">
-                                    {% csrf_token%}
-                                    <button type="submit" class="border-white">
-                                        <span><i class="far fa-trash-alt"></i></span> 
-                                    </button> 
-                                </form>
-                            {% endif%}
-                            <h9>Posted on: {{r.created_at}}</h9>
+                    <div class="row ">
+                        <div class="user-review">
+                            {% for r in book_reviews%}
+                            <div class="col-sm-2">
+                                {% if r.writer.profile_pic %}
+                                <img class="profile-pic img-thumbnail" src="{{r.writer.profile_pic.url}}" alt="profile-pic">
+                                {% endif %} 
+                            </div>
+                            <div class="col-sm-10 rating">
+                                <p>Rating: {{r.rating}}</p>
+                                <a href="/user/{{r.writer.id}}" class="text-center">{{r.writer.name}}</a> wrote: {{r.content}}
+                                <p><small>Posted on: {{r.created_at}}</small></p>
+                                {% if curr_user.id == r.writer.id %}
+                                    <form action="/delete_confirmation/{{r.id}}" method="post">
+                                        {% csrf_token%}
+                                        <button type="submit" class="trash-btn">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button> 
+                                    </form>
+                                {% endif%}
+                            </div>
+                            <hr>
+                            {% endfor %}
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
             </section>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>   
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+
+            <section id='main-footer-content'> <!-- MAIN FOOTER CONTENT -->
+                <div class="container ">
+                    <div class="row footer-info">
+                        <div id='footer-content-contact' class="col-sm-4 footer-content">
+                            <h3>Belp the Book</h3>
+                            <p class='mt-4'>
+                                Belp is a successful book review website used by people from all across the world! Each review contains a short summary of the book, background of authors and topics, or anything you want.
+                            </p>
+                        </div>
+                        <div class="col-sm-4 footer-content">
+                            <h3>Quick Links</h3>
+                            <ul class='text-uppercase quicklinks mt-4'>
+                                <li>
+                                    <p><a href="#" class='link'>contact</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>events</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>e-books</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>blog</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#" class='link'>tell-a-friend</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="#">help & support</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 footer-content company-info">
+                            <h3>Belp</h3>
+                            <p class='company-address mt-4'>Address:</p>
+                            <p class='company-address'>1234 Main St.</p>
+                            <p class='company-address'>San Franciso, CA 94115</p>
+                            <div class="contact-content">
+                                <p><i class="fas fa-phone pr-2"></i>123-456-7890</p>
+                                <p><i class="fas fa-envelope mr-2"></i>info@mywesite.com</p>
+                            </div>
+                            <div class="social-media">
+                                <a href="#"><i id="linkedin" class="fab fa-linkedin fa-2x"></i></a> 
+                                <a href="#"><i id="github" class="fab fa-github fa-2x"></i></a> 
+                                <a href="#"><i id="facebook" class="fab fa-facebook-square fa-2x"></i></a>     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  <!-- MAIN FOOTER CONTENT -->    
+        </div> <!--WRAPPER-->
+
+        <!-- FOOTER -->
+
+        <footer id='footer'>
+            <div class="container">
+                <div class="footer-bottom">
+                    <p class="text-center copyright-text"><i class="far fa-copyright"> 2019 Belp | Designed by Kenny Pham</i></p> 
+                </div>
+            </div>
+        </footer>
+
+        <!-- FOOTER -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
                     
-            <!--Javascript-->
+            <!-- Javascript
             <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-            <script type="text/javascript" src="../static/book_review/js/book_show.js"></script>
-        </div>
+            <script type="text/javascript" src="../static/book_review/js/book_show.js"></script> -->
     </body>
 </html>

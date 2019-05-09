@@ -68,7 +68,7 @@ body, html {
 }
 
 #center-content {
-  margin-top: 4rem;
+  margin: 5rem 0;
 }
 
 #center-content .icon {
@@ -99,6 +99,7 @@ body, html {
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   position: relative;
+  max-width: 600px;
   -webkit-transition: -webkit-transform 400ms box-shadow 400ms;
   transition: -webkit-transform 400ms box-shadow 400ms;
   transition: transform 400ms box-shadow 400ms;
@@ -119,11 +120,20 @@ body, html {
      object-fit: scale-down;
 }
 
+.card .img-card {
+  max-width: 800px;
+  max-height: 800px;
+}
+
 hr {
   border: 0;
   height: 1px;
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+hr #last-hr:last-child {
+  display: none;
 }
 
 blockquote::before {
@@ -147,14 +157,20 @@ blockquote::after {
   padding-bottom: 15px;
 }
 
-#last-hr:last-child {
-  display: none;
+#old-reviews .trash-btn {
+  background-color: transparent;
+  border: transparent;
+  color: red;
+}
+
+#no-review {
+  margin-bottom: 200px;
 }
 
 #main-footer-content {
   background: #303036;
   color: gainsboro;
-  margin-top: -40px;
+  margin-top: 35px;
 }
 
 #main-footer-content .footer-info {

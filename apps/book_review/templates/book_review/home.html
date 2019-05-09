@@ -51,34 +51,6 @@
                     </div>
                 </nav>
             </div>               
-            <!-- <header>
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg"> 
-                        <a href="/home" class="navbar-brand display-5">Belp for Books</a>
-                        <button class="btn navbar-toggler" data-toggle="collapse" data-target="#navbarItem">
-                            <span class="toggle"><i class="fas fa-book-open"></i></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarItem">
-                            <div class="dropdown float-right">
-                                <button class="btn btn-sm btn-danger dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{curr_user.name}}
-                                </button>
-                                <a href="/books/add" class="btn btn-danger btn-sm mr-2">Add Book and Review</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-user-tie"></i> Profile</a>
-                                    <a class="dropdown-item" href="/user/{{curr_user.id}}"><i class="fas fa-bookmark"></i>  My Books</a>
-                                    <a class="dropdown-item" href="mailto:kenchosepham@gmail.com"><i class="far fa-question-circle"></i>  Support</a>
-                                </div>
-                                <form class="nav-item float-right" action="/logout" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
-                                </form>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </header> -->
-            
             
             <section id="center-content">
                 <div class="container">
@@ -114,7 +86,7 @@
                         <div class="card-columns">
                             {% for r in reviews %}
                                 <div class="card mt-3 pt-3">
-                                    <img class="card-img-top" src="{{r.book.book_img.url}}" alt="Book image"> 
+                                    <img class="card-img-top img-thumbnail img-card" src="{{r.book.book_img.url}}" alt="Book image"> 
                                     <div class="card-body">
                                         <h5 class="text-center"><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h5> 
                                         <p class="text-center"><small class="text-center">by {{r.book.author}}</small></p>
@@ -129,7 +101,7 @@
                 </div>
             </section>
 
-            
+            {% if other_r%}
             <section id="old-reviews">
                 <div class="container">
                     <div class='row d-block'>
@@ -142,12 +114,12 @@
                                     <div class="row old-review-content">
                                         <div class="col-md-11">
                                             <h3><a href="/books/{{r.book.id}}">{{r.book.title}}</a></h3>
+                                            <p  class="mb-4"><small>by {{r.book.author}}</small></p>
                                             <p>Rating: {{r.rating}}</p>
-                                            <p><a href="/user/{{r.writer.id}}" class="book-review-writer">{{r.writer.name}}</a> says: <blockquote>{{r.content}}</blockquote></p>
+                                            <p><a href="/user/{{r.writer.id}}">{{r.writer.name}}</a> says:<blockquote>{{r.content}}</blockquote></p>
                                             <p>Posted on {{r.created_at}}</p>  
                                         </div>
                                     </div>
-                                    <!-- <h2 class="border border-radius d-inline">{{r.id}}</h2> -->
                                 </div>
                             </div>
                             <hr id='last-hr'>
@@ -156,6 +128,11 @@
                     </div>
                 </div> 
             </section>
+            {% else %}
+            <section>
+                <div id='no-review'></div>
+            </section>
+            {%endif%}
 
             <section id='main-footer-content'> <!-- MAIN FOOTER CONTENT -->
                 <div class="container ">

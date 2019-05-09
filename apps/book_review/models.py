@@ -75,17 +75,6 @@ class UserManager(models.Manager):
             user.password=hashed_pw
         user.save()
         return user
-    # def updateUser(self, postData, postFile, curr_user):
-    #     user = User.objects.get(id=curr_user.id)
-    #     user.name=postData['name']
-    #     user.alias=postData['alias']
-    #     user.email=postData['email']
-    #     user.profile_pic=postFile['profile_pic']
-    #     if len(postData['password']) > 0:
-    #         hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
-    #         user.password=hashed_pw
-    #     user.save()
-    #     return user
 
     def logVal(self, postData):
         error=[]
@@ -116,15 +105,16 @@ class ReviewManager(models.Manager):
             error.append('Review field cannot be blank')
         return error
 
-    def addBookReview(self, postData, user):
+    def addBookReview(self, postData, user, postFile):
         if len(postData['new_author']) > 0:
             author=Author.objects.create(author_name=postData['new_author'])
         else:
             author=Author.objects.get(id=postData['old_author'])
-        book = Book.objects.create(title=postData['title'], author = author.author_name)
-        reviewer = User.objects.get(id=user.id)
-        review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
-        return review
+            # book = Book.objects.create(title=postData['title'], author = author.author_name)
+            book = Book.objects.create(title=postData['title'], author = author.author_name, book_img=postFile['book_img'])
+            reviewer = User.objects.get(id=user.id)
+            review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
+            return review
 
     def addReviewVal(self, postData, book, user):
         error=[]
@@ -153,7 +143,8 @@ class User(models.Model):
     alias=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
     password=models.CharField(max_length=255)
-    profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="/profile_image/media/profile_image/default-profile.png")
+    profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="profile_image/default-profile.png")
+    # profile_pic=models.ImageField(upload_to="profile_image", blank=True, default="/profile/media/profile_image/default-profile.png")
     objects=UserManager()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -163,7 +154,7 @@ class User(models.Model):
 class Book(models.Model):
     title=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    book_img=models.ImageField(upload_to="book_image", blank=True, default="profile_image/default-book.png", null=True)
+    book_img=models.ImageField(upload_to="book_image", blank=True, default="book_image/default-book.png")
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):

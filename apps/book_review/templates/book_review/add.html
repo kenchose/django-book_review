@@ -71,17 +71,17 @@
             </div>               
 
                             
-            <div>
-                {%if messages%}
+            {%if messages%}
+                <div class="alert alert-danger">
                     {%for message in messages%}
                     <ul>
-                        <li>
+                        <li class="error-content">
                             <h4>{{message}}</h4>
                         </li>
                     </ul>
                     {%endfor%}
+                </div>
                 {%endif%}
-            </div>
 
             <section>
                 <h2 class="text-center mt-4">Add a New Book Title and a Review</h2>

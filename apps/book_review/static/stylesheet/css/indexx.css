@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Work+Sans");
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
@@ -15,13 +17,52 @@
   border-radius: 5px;
 }
 
+.navbar-container {
+  background: #3d474f;
+  min-width: 100%;
+  padding: 0;
+}
+
+.navbar-container #brand-text {
+  font-size: 25px;
+}
+
+.navbar-container .collapse {
+  padding: 8px;
+}
+
+.navbar-container #navbar-brand {
+  color: #abb3b5;
+  text-decoration: none;
+}
+
+.navbar-container #navbar-brand:hover {
+  color: greenyellow;
+}
+
+.navbar-container #navbar-brand img {
+  margin-bottom: 10px;
+}
+
+.navbar-container .nav-link {
+  color: #abb3b5;
+}
+
+.navbar-container .nav-link:hover {
+  color: greenyellow;
+}
+
+.navbar-container .fa-book-open {
+  color: red;
+}
+
 #edit-wrapper {
-  background: url("../../img/backgrounds/book-cactus.jpg");
-  background-repeat: no-repeat;
+  background: url("./../../book_review/img/backgrounds/book-cactus.jpg") no-repeat center;
   font-family: 'Work Sans', sans-serif;
   font-weight: bold;
   background-size: cover;
-  padding-bottom: 130px;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 .edit-alert {

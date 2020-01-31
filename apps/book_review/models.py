@@ -69,7 +69,10 @@ class UserManager(models.Manager):
         user.name=postData['name']
         user.alias=postData['alias']
         user.email=postData['email']
-        user.profile_pic = postFile['profile_pic'] 
+        if user.profile_pic in postFile:
+            user.profile_pic = postFile['profile_pic'] 
+        else:
+            postFile['profile_pic'] = False
         if len(postData['password']) > 0:
             hashed_pw=bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
             user.password=hashed_pw
@@ -110,11 +113,11 @@ class ReviewManager(models.Manager):
             author=Author.objects.create(author_name=postData['new_author'])
         else:
             author=Author.objects.get(id=postData['old_author'])
-            # book = Book.objects.create(title=postData['title'], author = author.author_name)
-            book = Book.objects.create(title=postData['title'], author = author.author_name, book_img=postFile['book_img'])
-            reviewer = User.objects.get(id=user.id)
-            review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
-            return review
+        # book = Book.objects.create(title=postData['title'], author = author.author_name)
+        book = Book.objects.create(title=postData['title'], author = author.author_name, book_img=postFile['book_img'])
+        reviewer = User.objects.get(id=user.id)
+        review = Review.objects.create(content=postData['content'], rating = postData['rating'], book=book, writer=reviewer)
+        return review
 
     def addReviewVal(self, postData, book, user):
         error=[]
